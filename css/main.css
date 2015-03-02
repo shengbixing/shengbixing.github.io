@@ -1157,6 +1157,7 @@ pre .javascript .function {
 }
 .post-more-link {
   margin-top: 50px;
+  text-align: center;
 }
 @media (max-width: 767px) {
   .posts-collapse {
