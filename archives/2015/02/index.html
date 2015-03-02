@@ -41,15 +41,13 @@
   </script>
 
 
-  <title> IIssNan's Notes </title>
+  <title> 归档 // IIssNan's Notes </title>
 </head>
 
 <body>
   <div class="container one-column
-              
-              
-   page-home 
-">
+               page-not-home 
+               page-archive ">
     <div class="headband"></div>
 
     <div id="header" class="header">
@@ -105,7 +103,31 @@
 
           <div id="posts" class="posts-expand">
             
+
+  <span class="archive-move-on"></span>
+
+  <span class="archive-page-counter">
+    
+    
+     
+    
+    非常好! 目前共计 172 篇日志。 继续努力。
+  </span>
+
   
+
+    
+    
+    
+
+    
+      
+      <div class="collection-title">
+        <h2 class="archive-year motion-element" id="archive-year-2015">2015</h2>
+      </div>
+    
+    
+
     
 
   <div class="post post-type-normal ">
@@ -117,9 +139,7 @@
           
           
             
-              <a class="post-title-link" href="/2015/getting-started-reactjs/">
-                ReactJS 快速入门
-              </a>
+              ReactJS 快速入门
             
           
         </h1>
@@ -398,14 +418,21 @@
         
 
         
-          <div class="post-eof the-shape"></div>
-        
       </div>
     
   </div>
 
 
+
   
+
+    
+    
+    
+
+    
+    
+
     
 
   <div class="post post-type-link ">
@@ -478,14 +505,21 @@
         
 
         
-          <div class="post-eof the-shape"></div>
-        
       </div>
     
   </div>
 
 
+
   
+
+    
+    
+    
+
+    
+    
+
     
 
   <div class="post post-type-normal ">
@@ -497,9 +531,7 @@
           
           
             
-              <a class="post-title-link" href="/2015/atom-packages-for-web-developers/">
-                适用于WEB开发者的Atom编辑器Package
-              </a>
+              适用于WEB开发者的Atom编辑器Package
             
           
         </h1>
@@ -531,13 +563,97 @@
         
 
         
-          <p>这个周末试用 <a href="https://github.com">GitHub</a> 的 <a href="https://atom.io/">Atom</a> 编辑器编写一个WEB项目，感觉非常好用。 Atom 的社区很繁荣，有着丰富的扩展/插件（<a href="https://atom.io/packages">packages</a>）。安装 Atom 的 Package 非常简单，可以在编辑器的偏好设置里面安装，也可以在命令行中使用 <code>apm</code> 命令来安装。</p>
+          <p>这个周末试用 <a href="https://github.com" target="_blank" rel="external">GitHub</a> 的 <a href="https://atom.io/" target="_blank" rel="external">Atom</a> 编辑器编写一个WEB项目，感觉非常好用。 Atom 的社区很繁荣，有着丰富的扩展/插件（<a href="https://atom.io/packages" target="_blank" rel="external">packages</a>）。安装 Atom 的 Package 非常简单，可以在编辑器的偏好设置里面安装，也可以在命令行中使用 <code>apm</code> 命令来安装。</p>
 <p>在介绍适用于 WEB 开发的 Package 之前，让我们快速过下如何安装 Atom Packages。</p>
-          <div class="post-more-link align-center">
-            <a class="btn" href="/2015/atom-packages-for-web-developers/#more">
-              继续阅读 &raquo;
-            </a>
-          </div>
+<a id="more"></a>
+<h2 id="安装_Atom_Package">安装 Atom Package</h2><h3 id="通过偏好设置安装_Package">通过偏好设置安装 Package</h3><p>使用快捷键 <code>command + ,</code>/<code>ctrl + ,</code> 打开偏好设置。点击左侧的 <code>Install</code> 即可浏览线上的 Package 。 顶部是一个搜索框，可以搜索已经发布在 <a href="http://atom.io/http://atom.io/packages" target="_blank" rel="external">atom.io</a> 上的 Package ；紧接着是 <code>Feature Packages</code>，即精选的 Package ，列出来的是一些比较优质的 Package 。</p>
+<p><img class="full-image" src="/uploads/install-atom-packages.png" alt="Install atom packages"></p>
+<h3 id="通过_apm_命令安装_Package">通过 <code>apm</code> 命令安装 Package</h3><p>Atom 自带了一个 <code>apm</code> 的 Package 管理工具。我们可以在命令行下执行以下命令来确认 <code>apm</code> 是否已经安装：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span>
+</pre></td><td class="code"><pre><span class="line">apm <span class="operator"><span class="keyword">help</span> <span class="keyword">install</span></span></span>
+</pre></td></tr></table></figure>
+<p>命令之后应该输出 <code>apm install</code> 的详细信息。如果输出不是 <code>apm install</code> 的命令信息，打开 Atom 菜单，选择 <code>Install Shell Commands</code> 来安装 <code>atom</code> 和 <code>apm</code> 。</p>
+<p>确认 <code>apm</code> 正确安装后，便可以开始安装 Package 。正如上述执行 <code>apm help install</code> 所提示的，安装的命令是：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+</pre></td><td class="code"><pre><span class="line">apm install [&lt;package_name&gt;<span class="keyword">...</span>]</span>
+<span class="line">apm install &lt;package_name&gt;@&lt;package_version&gt;</span>
+<span class="line">apm install --packages-file my-packages.txt</span>
+</pre></td></tr></table></figure>
+<h2 id="Package_推荐">Package 推荐</h2><h3 id="快捷输入类">快捷输入类</h3><ul>
+<li><p><a href="https://atom.io/packages/autocomplete-plus" target="_blank" rel="external">autocomplete-plus</a>，当输入的时候，提供可能的候选项。</p>
+<p><img src="/uploads/atom-autocomplete-plus.gif" alt="autocomplete plus"></p>
+</li>
+</ul>
+<ul>
+<li><a href="https://atom.io/packages/atom-ctags" target="_blank" rel="external">atom-ctags</a>，使用 <code>ctags</code> 来强化自动完成功能，需借助于 <code>autocomplete-plus</code>。</li>
+</ul>
+<ul>
+<li><p><a href="https://atom.io/packages/javascript-snippets" target="_blank" rel="external">javascript-snippets</a>，顾名思义，输入特殊的字符后自动扩展成对应的代码片段。</p>
+<p><img src="/uploads/atom-javascript-snippets.gif" alt="javascript-snippets"></p>
+</li>
+</ul>
+<ul>
+<li><p><a href="https://atom.io/packages/vim-mode" target="_blank" rel="external">vim-mode</a></p>
+<p>VIM-Mode 支持在 Atom 中使用 <code>VIM</code> 编辑器的操作方式来编辑。这对我来说是个非常 Killer 的 Package ，在此之前我一直在 WebStorm 上通过一个插件模拟 VIM 操作，异常难用。而在 Atom 上的这个模拟VIM操作，使用起来感觉还是比较顺手的。你可以混合 VIM 操作和普通的编辑操作。</p>
+</li>
+</ul>
+<ul>
+<li><p><a href="https://atom.io/packages/emmet" target="_blank" rel="external">emmet</a></p>
+<p>手写 <code>HTML</code> 多少显得专业，但是手写的问题在于得大量的代码。<a href="http://emmet.io/" target="_blank" rel="external">Emmet</a>大幅提升手写的效率。非常值得一装。</p>
+</li>
+</ul>
+<ul>
+<li><a href="https://atom.io/packages/go-to-line" target="_blank" rel="external">go-to-line</a>，跳转到指定的行，只要 <code>ctrl + g</code> 后输入行号即可。</li>
+</ul>
+<h3 id="Linters">Linters</h3><ul>
+<li><p><a href="https://atom.io/packages/jshint" target="_blank" rel="external">jshint</a>，验证你的 JavaScript ，写更专业的 JavaScript 代码。</p>
+<p><img src="/uploads/atom-jshint.png" alt="JSHint"></p>
+</li>
+</ul>
+<ul>
+<li><p><a href="https://atom.io/packages/csslint" target="_blank" rel="external">csslint</a>， CSSLint 会报告出不合规定的 CSS 规则。</p>
+<p><img src="/uploads/atom-csslint.png" alt="CSSLint"></p>
+</li>
+</ul>
+<h3 id="版本控制类">版本控制类</h3><ul>
+<li><p><a href="https://atom.io/packages/git-plus" target="_blank" rel="external">git plus</a>，在 Atom 里面执行 Git 命令，不用来回切换终端和编辑器。</p>
+<p><img src="/uploads/atom-git-plus.gif" alt="git plug"></p>
+</li>
+</ul>
+<ul>
+<li><a href="https://atom.io/packages/git-log" target="_blank" rel="external">git-log</a>，在 Atom 里面显示图形化的提交记录。</li>
+</ul>
+<ul>
+<li><a href="https://atom.io/packages/merge-conflicts" target="_blank" rel="external">merge-conflicts</a>，在 Atom 里面处理合并产生冲突的文件。</li>
+</ul>
+<h3 id="辅助类">辅助类</h3><ul>
+<li><p><a href="https://atom.io/packages/minimap" target="_blank" rel="external">minimap</a>，为 Atom 加上 Sublime Text 的源码预览图，提供丰富的自定义选项，值得一用。</p>
+<p><img src="/uploads/atom-minimap.png" alt="Mini Map"></p>
+</li>
+</ul>
+<ul>
+<li><a href="https://atom.io/packages/file-icons" target="_blank" rel="external">file-icons</a>，显示文件类型对应的图标。</li>
+</ul>
+<ul>
+<li><a href="https://atom.io/packages/atom-beautify" target="_blank" rel="external">atom-beautify</a>，格式化代码，更统一的代码风格。</li>
+</ul>
+<ul>
+<li><p><a href="https://atom.io/packages/color-picker" target="_blank" rel="external">Color Picker</a></p>
+<p>在编辑器里面挑选颜色。通过右键选择 <code>Color picker</code> ，或者 <code>cmd + shift + c</code>/<code>ctrl + alt + c</code> 快捷键调出颜色选择面板。支持 <code>HEX, HEXA, RGB, RGBA, HSL, HSLA</code> 形式指定的颜色值。</p>
+</li>
+</ul>
+<ul>
+<li><a href="https://atom.io/packages/csscomb" target="_blank" rel="external">csscomb</a>，<a href="http://csscomb.com/" target="_blank" rel="external">CSSComb</a> 的一个扩展工具， CSSComb 帮你写出更漂亮的 CSS ！</li>
+</ul>
+<ul>
+<li><a href="https://atom.io/packages/autoprefixer" target="_blank" rel="external">autoprefixer</a>，<a href="https://github.com/postcss/autoprefixer" target="_blank" rel="external">AutoPrefix</a>的一个扩展工具，自动为 CSS 属性添加特定的前缀。</li>
+</ul>
+<ul>
+<li><a href="https://atom.io/packages/localization" target="_blank" rel="external">localization</a>，国际化 Package ，支持简体中文。但是在我使用的版本 <code>0.179.0</code> 中无法使用。</li>
+</ul>
+
         
 
       </div>
@@ -562,14 +678,21 @@
         
 
         
-          <div class="post-eof the-shape"></div>
-        
       </div>
     
   </div>
 
 
+
   
+
+    
+    
+    
+
+    
+    
+
     
 
   <div class="post post-type-normal ">
@@ -581,9 +704,7 @@
           
           
             
-              <a class="post-title-link" href="/2015/why-to-blog-using-static-site-generator/">
-                为何使用Jekyll这样的静态编译博客？
-              </a>
+              为何使用Jekyll这样的静态编译博客？
             
           
         </h1>
@@ -615,14 +736,18 @@
         
 
         
-          <p>晚上在<a href="http://v2ex.com/">V2EX</a>看到一个讨论主题：<a href="http://v2ex.com/t/163522#reply6">『为什么 Jekyll 这样的静态编译博客能火?』</a>。想到不久之前跟同事讨论过这个主题，当时作为饭后闲谈，聊过即过。今天再看到这个问题，就花了点时间把之前的一些想法写了下来。就以结论来说，我比较偏向使用静态编译博客。</p>
-<p><img src="/uploads/img_2796.jpg" alt="" class="full-image"/></p>
+          <p>晚上在<a href="http://v2ex.com/" target="_blank" rel="external">V2EX</a>看到一个讨论主题：<a href="http://v2ex.com/t/163522#reply6" target="_blank" rel="external">『为什么 Jekyll 这样的静态编译博客能火?』</a>。想到不久之前跟同事讨论过这个主题，当时作为饭后闲谈，聊过即过。今天再看到这个问题，就花了点时间把之前的一些想法写了下来。就以结论来说，我比较偏向使用静态编译博客。</p>
+<p><img src="/uploads/img_2796.jpg" alt="" class="full-image"></p>
 <p class="center">（拍摄于 2015/01/18 - 厦门 福建）</p>
-          <div class="post-more-link align-center">
-            <a class="btn" href="/2015/why-to-blog-using-static-site-generator/#more">
-              继续阅读 &raquo;
-            </a>
-          </div>
+
+<a id="more"></a>
+<p>如果是为了纯粹的写作，我觉得那么任何一个提供写作的平台，比如<a href="https://medium.com/" target="_blank" rel="external">Medium</a>，<a href="http://www.jianshu.com/" target="_blank" rel="external">简书</a>和<a href="http://blog.sina.com.cn/" target="_blank" rel="external">新浪博客</a>都能让你更专注在写作上。</p>
+<p>之前看到过一篇段子，说一警察盘问一司机为什么在后备箱装了那么多钱，然后司机想了想说，因为我能。对于使用独立博客的人来说，可能也有我能的这种心里。再加上爱折腾，所以一个新的形式出来被捧红其实不奇怪。</p>
+<p>再说到写作方式，实际上我比较偏向静态博客的写作方式。静态博客在本地编辑文件，意味着可以选择你所喜欢的任意一个编辑器来写作，这是在线编辑办不到的，在线你只能使用一个功能有限的编辑器。</p>
+<p>然后是存储方式，数据库存储或者文件存储我觉得这本身并不重要，重要的是数据的可管理性和安全性。选择合适的管理软件，我认为文件存储本身并没有太大的问题。静态博客有版本控制软件的助力，在数据管理和安全性上并不会比存储在数据库中差。</p>
+<p>然后是速度，在使用静态博客的过程，因为我目前的页面仅有200个不到，所以构建速度在我可以接受的范围内。几条简单的命令，设置可以使用Travis CI来简化部署的过程，从流程上并不比后台管理麻烦。关键是这种操作过程更多显示的是一个『我能』的信息。<a href="http://octopress.org/" target="_blank" rel="external">Octpress</a>的宣传口号不就是『A blogging framework for hackers.』，带有很浓的装逼意味。</p>
+<p>最后，因为<a href="https://pages.github.com/" target="_blank" rel="external">GitHub Pages</a>等类似网站提供了免费的托管服务，不用自己掏钱购买VPS或者虚拟主机，不用担心服务器稳定性问题。何乐而不为？</p>
+
         
 
       </div>
@@ -635,14 +760,21 @@
         
 
         
-          <div class="post-eof the-shape"></div>
-        
       </div>
     
   </div>
 
 
+
   
+
+    
+    
+    
+
+    
+    
+
     
 
   <div class="post post-type-normal ">
@@ -654,9 +786,7 @@
           
           
             
-              <a class="post-title-link" href="/2015/reading-list-2015-02-03/">
-                TIL - Vagrant and Unit testing
-              </a>
+              TIL - Vagrant and Unit testing
             
           
         </h1>
@@ -688,8 +818,8 @@
         
 
         
-          <p>今日阅读的文章内容主要包含两个部分，一个是<a href="https://www.vagrantup.com/">Vagrant</a>，另外一个是JavaScript的单元测试相关的知识。Vagrant的内容涉及两个方面，一篇是如何这只默认Guest机器的默认Shell；另外一篇是问题解决，当我在Guest机器中将系统升级后，出现<code>guest additions</code>不匹配的问题。<br>JavaScript测试那篇文章，主要描述在编写JavaScript单元测试的时候会涉及到的框架，以及使用示例。</p>
-<h2 id="Switch_to_your_favorite_shell_in_Vagrant"><a href="https://coderwall.com/p/1nvw-a/switch-to-your-favorite-shell-in-vagrant">Switch to your favorite shell in Vagrant</a></h2><p>如果有使用Vagrant，并且想在Vagrant box里面使用<code>zsh</code>，这篇文章可以帮你轻松的解决这个问题。文章中举例通过<a href="https://www.chef.io/chef/">Chef</a>和<a href="http://puppetlabs.com/">Puppet</a>来安装，以下代码是通过<code>Chef</code>来安装：</p>
+          <p>今日阅读的文章内容主要包含两个部分，一个是<a href="https://www.vagrantup.com/" target="_blank" rel="external">Vagrant</a>，另外一个是JavaScript的单元测试相关的知识。Vagrant的内容涉及两个方面，一篇是如何这只默认Guest机器的默认Shell；另外一篇是问题解决，当我在Guest机器中将系统升级后，出现<code>guest additions</code>不匹配的问题。<br>JavaScript测试那篇文章，主要描述在编写JavaScript单元测试的时候会涉及到的框架，以及使用示例。</p>
+<h2 id="Switch_to_your_favorite_shell_in_Vagrant"><a href="https://coderwall.com/p/1nvw-a/switch-to-your-favorite-shell-in-vagrant" target="_blank" rel="external">Switch to your favorite shell in Vagrant</a></h2><p>如果有使用Vagrant，并且想在Vagrant box里面使用<code>zsh</code>，这篇文章可以帮你轻松的解决这个问题。文章中举例通过<a href="https://www.chef.io/chef/" target="_blank" rel="external">Chef</a>和<a href="http://puppetlabs.com/" target="_blank" rel="external">Puppet</a>来安装，以下代码是通过<code>Chef</code>来安装：</p>
 <figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span>
 <span class="line">2</span>
 <span class="line">3</span>
@@ -703,11 +833,14 @@
 <span class="line">  command <span class="string">"chsh -s $(which zsh) vagrant"</span></span>
 <span class="line">end</span>
 </pre></td></tr></table></figure>
-          <div class="post-more-link align-center">
-            <a class="btn" href="/2015/reading-list-2015-02-03/#more">
-              继续阅读 &raquo;
-            </a>
-          </div>
+<a id="more"></a>
+<h2 id="Vagrant_Tip:_Sync_VirtualBox_Guest_Additions"><a href="http://kvz.io/blog/2013/01/16/vagrant-tip-keep-virtualbox-guest-additions-in-sync/" target="_blank" rel="external">Vagrant Tip: Sync VirtualBox Guest Additions</a></h2><p>在将一个Vagrant box从Ubuntu 12.04升级到14.04后，<code>Reload</code>后提示：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span>
+</pre></td><td class="code"><pre><span class="line">The guest additions on this VM <span class="operator"><span class="keyword">do</span> <span class="keyword">not</span> <span class="keyword">match</span> the <span class="keyword">install</span> <span class="keyword">version</span> <span class="keyword">of</span> VirtualBox!</span></span>
+</pre></td></tr></table></figure>
+<p>文章通过介绍通过安装一个Vagrant Plugin来解决这个问题，简单方便。</p>
+<h2 id="Testing_in_Browsers_and_Node_with_Mocha,_Chai,_Sinon,_and_Testem"><a href="http://www.kenpowers.net/blog/testing-in-browsers-and-node/" target="_blank" rel="external">Testing in Browsers and Node with Mocha, Chai, Sinon, and Testem</a></h2><p>写<code>JavaScript</code>测试时，你可能使用到的框架以及框架的使用例子。非常实用。</p>
+
         
 
       </div>
@@ -736,21 +869,102 @@
         
 
         
-          <div class="post-eof the-shape"></div>
+      </div>
+    
+  </div>
+
+
+
+  
+
+    
+    
+    
+
+    
+    
+
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Code and pray
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              发表于 2015-01-31
+            
+          </span>
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/code-and-pray/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/code-and-pray/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          <p>不久之前，发了条状态感慨说：</p>
+<blockquote>
+<p>害怕风险不该让你成为保守派</p>
+</blockquote>
+<p>越是严肃的产品，对于代码的质量要求越高，因为每一个bug都可能造成客户的不信任甚至客户的流失。这是一个很残酷的事实，如同在一条逆流之上，船只倒退一步，被拉开的距离可能是两步甚至更多。</p>
+<p>为了保证质量，从确定需求到最终交付，每一个步骤都夹杂着不少人努力的汗水。而作为产品的负载体，代码的要求更是需要精细的制作。从代码被写下来的前一刻，就开始了各种测试。单元测试，开发测试，QA测试，TA测试。</p>
+<p>bug是不可避免的，如同人无完人，但可以最大限度的避免。说来简单，实施起来如同登天。团队成员在具备过硬的技术等硬性条件的同时，还必须专注与激情。而在此条件之下，出现问题情有可原。所以说，在尽力的同时，不应害怕问题而畏首畏尾。总结问题经验，继续前进才是应有的态度，专业的态度。</p>
+
+        
+
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/随笔/">
+                #随笔
+              </a>
+            
+          </div>
+        
+
+        
+
         
       </div>
     
   </div>
 
 
+
   
 
           </div>
 
-          
-            <div class="pagination">
-              <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/">35</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
-            </div>
           
         </div>
 
@@ -766,6 +980,15 @@
 <div id="sidebar" class="sidebar">
   <div class="sidebar-inner">
 
+    
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview" data-target="site-overview">
+          站点概览
+        </li>
+      </ul>
     
 
     <div class="site-overview">
@@ -826,6 +1049,10 @@
 
     </div>
 
+    
+      <div class="post-toc sidebar-panel-active">
+        
+      </div>
     
   </div>
 </div>
@@ -904,17 +1131,6 @@
   <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
 
   
-  <script type="text/javascript" id="motion.page.home">
-    $(document).ready(function () {
-      $.Velocity.RunSequence([
-        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
-        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
-        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200, sequenceQueue: false } }
-      ]);
-      $('.menu-item').velocity('transition.slideDownIn', {display: null});
-    });
-  </script>
-
 
   <script type="text/javascript" id="motion.global">
   $(document).ready(function () {
@@ -1027,6 +1243,12 @@
 
 
   
+  
+    <script type="text/javascript" id="motion.page.archive">
+      $('.archive-year').velocity('transition.slideLeftIn');
+    </script>
+  
+
 
   
 

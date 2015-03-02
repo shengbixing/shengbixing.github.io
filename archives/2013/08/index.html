@@ -1,0 +1,2465 @@
+<!doctype html>
+<html class="theme-next use-motion">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+  <meta name="google-site-verification" content="VvyjvVXcJQa0QklHipu6pwm2PJGnnchIqX7s5JbbT_0" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.3.0rc3"/>
+
+
+    <meta name="description" content="胡编一通，乱写一气" />
+
+
+
+    <link rel="alternate" href="/atom.xml" title="IIssNan's Notes" type="application/atom+xml" />
+
+
+
+    <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.3.0rc3" />
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?50c15455e37f70aea674ff4a663eef27";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  <title> 归档 // IIssNan's Notes </title>
+</head>
+
+<body>
+  <div class="container one-column
+               page-not-home 
+               page-archive ">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner clearfix">
+        <h1 class="site-meta">
+    <a href="/" class="brand">
+        <span class="logo">
+          <i class="icon-logo"></i>
+        </span>
+        <span class="site-title">IIssNan's Notes</span>
+    </a>
+</h1>
+
+
+  <ul id="menu" class="menu">
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          首页
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          归档
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          标签
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+            
+          
+
+          <div id="posts" class="posts-expand">
+            
+
+  <span class="archive-move-on"></span>
+
+  <span class="archive-page-counter">
+    
+    
+     
+    
+    非常好! 目前共计 172 篇日志。 继续努力。
+  </span>
+
+  
+
+    
+    
+    
+
+    
+      
+      <div class="collection-title">
+        <h2 class="archive-year motion-element" id="archive-year-2013">2013</h2>
+      </div>
+    
+    
+
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              使用网盘（Dropbox/Google Drive）同步Git仓库
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              发表于 2013-08-16
+            
+          </span>
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2013/sync-git-repos-in-cloud/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2013/sync-git-repos-in-cloud/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          <p>还在使用老掉牙的U盘搬运代码（文件）的方式，从一台机器上复制后，粘贴到另一台机器上？太Out了。使用<a href="http://github.com" target="_blank" rel="external">Github</a> 倒是一个非常不错的替代方法。但无论是基于什么理由都有可能不想把代码公开（毕竟Github免费账户是无法建立Private Repository）。建立Private Repository？<a href="http://bitbucket.org" target="_blank" rel="external">Bitbucket</a>免费账户同样有私有的仓库。不过，在云概念满天飞的时代，免费网盘满大街随手都可以捡到一个。为何不能使用网盘来保存<a href="http://iissnan.com/progit/" target="_blank" rel="external">Git</a>项目文件？</p>
+<h2 id="网盘选择">网盘选择</h2><p>对于网盘的要求无非是免费、量大（免费还要量大？用户真是太苛刻了）以及安全可靠。首推的当然是口碑极佳的<a href="https://dropbox.com" target="_blank" rel="external">Dropbox</a>，但由于某些原因导致Dropbox的客户端下载有些技术难度，庆幸的是同步没有问题，但与国内网盘相比速度上可能稍差。另外一个不错的选择是<a href="https://drive.google.com" target="_blank" rel="external">Google Drive</a>，免费15G，可靠性有保证。除此之外，理论上只要支持以「.」开头的文件的网盘都可以用来同步Git项目。</p>
+<h2 id="具体设定">具体设定</h2><p>做法分为三步：初始化本地Git仓库；在网盘中新建一个空的Git仓库；设定网盘中的Git仓库为远程仓库。具体操作步骤如下：</p>
+<a id="more"></a>
+<ol>
+<li><p>初始化本地Git仓库</p>
+<pre><code><span class="built_in">cd</span> ExampleProject <span class="comment"># 定位到项目目录中</span>
+git init <span class="comment"># 本地Git仓库初始化</span>
+git commit <span class="operator">-a</span> -m <span class="string">"Initial Commit"</span>  <span class="comment"># 初次提交，本地仓库创建完成</span>
+</code></pre></li>
+</ol>
+<ol>
+<li><p>在网盘中新建一个空的Git仓库</p>
+<pre><code><span class="built_in">cd</span> CloudStorage <span class="comment"># 定位到网盘所在目录CloudStorage下 </span>
+git init --bare ExampleProject.git <span class="comment"># 新建空的Git仓库</span>
+</code></pre></li>
+</ol>
+<ol>
+<li><p>将网盘中的Git仓库作为远程仓库</p>
+<pre><code>cd ExampleProject <span class="preprocessor"># 定位到项目目录</span>
+git remote <span class="keyword">add</span> cloud CloudStorage/ExampleProject.git <span class="preprocessor"># 添加远程仓库</span>
+git <span class="keyword">push</span> -u cloud master <span class="preprocessor"># 推送本地修改到远程修改</span>
+</code></pre></li>
+</ol>
+<p>设定完成。</p>
+<h2 id="多台设备同步">多台设备同步</h2><p>其他设备上需要进行项目的修改时，首先使用网盘同步网盘的数据，假设网盘地址在d:/Documents/GoogleDrive。然后再<code>clone</code>项目到本地，<code>clone</code>的操作与<code>clone</code>Github上的项目大同小异（仓库地址不同）：</p>
+<pre><code>git clone <span class="symbol">file:</span>/<span class="regexp">//d</span><span class="symbol">:/Documents/GoogleDrive/ExampleProject</span>.git <span class="constant">ExampleProject</span>
+</code></pre><p>上面的代码将<code>checkout</code>网盘中的项目，然后放在<code>ExampleProject</code>目录下。<br>当在此台上修改了本地的代码并提交到本地仓库后，推送修改到远程仓库（网盘中的仓库），再让网盘进行同步，最后在其他机器上<code>fetch</code>/<code>pull</code>即可。</p>
+
+        
+
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/git/">
+                #Git
+              </a>
+            
+          </div>
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+
+
+
+  
+
+    
+    
+    
+
+    
+    
+
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              [译] 立即执行函数表达式（IIFE）
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              发表于 2013-08-14
+            
+          </span>
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2013/javascript-iife/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2013/javascript-iife/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          <p>原文：<a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/" target="_blank" rel="external">Immediately-Invoked Function Expression (IIFE)</a></p>
+<p>作者：”Cowboy” Ben Alman</p>
+<p>或许你没有注意到，我是一个对术语比较在意的人。所以，在听到许多次JavaScript「自执行匿名函数」（self-executing anonymous function）或者「自调用匿名函数」（self-invoked anonymouse function）这两个流行但令人误解的术语，我觉得得将我的想法写下来。</p>
+<p>本文实际上除了提供详细关于这个模式的原理之外，还推荐了我们之后如何称呼这个模式。当然，你可以跳过关于这个推荐的内容，直接查看<a href="#iife">「立即执行函数表达式」</a>的例子，但是我建议你完整地阅读本文。</p>
+<p>请注意，本文并非是那种「我就是正确的，而你是错误」的论调。我真诚的希望帮助人们了解潜在的复杂的概念，并且深感使用一致并且精确的术语是一种非常有效的促进人们相互理解的方法。</p>
+<h2 id="那么，到底本文旨在何处？">那么，到底本文旨在何处？</h2><p>在JavaScript中，每一个函数被调用时都会创建一个执行上下文（execution context）。定义在函数内部的变量和函数都只能在这个执行上下文的内部访问到，所以函数提供了一种创建私有成员的便捷的方法。</p>
+<pre><code><span class="comment">// makeCounter返回了另外一个内部函数。</span>
+<span class="comment">// 而这个内部函数可以访问私有变量i，所以这个内部函数实际上拥有一个特权（访问内部私有变量）</span>
+<span class="function"><span class="keyword">function</span> <span class="title">makeCounter</span><span class="params">()</span> </span>{
+    <span class="comment">// `i`变量仅在`makeCounter`函数内部有效</span>
+    <span class="keyword">var</span> i = <span class="number">0</span>;
+
+    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{
+        <span class="built_in">console</span>.log(++i);
+    };
+}
+
+<span class="comment">// 注意，`counter` 和 `counter2` 拥有各自的`i`</span>
+<span class="keyword">var</span> counter = makeCounter();
+counter(); <span class="comment">// logs: 1</span>
+counter(); <span class="comment">// logs: 2</span>
+
+<span class="keyword">var</span> counter2 = makeCounter();
+counter2(); <span class="comment">// logs: 1</span>
+counter2(); <span class="comment">// logs: 2</span>
+
+i; <span class="comment">// ReferenceError: i未定义（i仅在makeCounter中有效）</span>
+</code></pre><p>[译注]：<a href="http://jsfiddle.net/cEhxD/" target="_blank" rel="external">JSFiddle例子链接</a></p>
+<p>在很多情况下，不论<code>makeWhatever</code>函数返回的是什么样的值，你希望这个值在每次返回都是相同的，或者，你根本不需要函数返回一个值。</p>
+<h3 id="问题的本质">问题的本质</h3><a id="more"></a>
+<p>假若你定义了一个函数：<code>function foo () {}</code> 或者 <code>var foo = function () {}</code>，你都获得了一个函数的引用变量。可以在在这个变量使用括号操作符（parenthese）来调用函数，即：<code>foo()</code>。</p>
+<pre><code><span class="comment">// 像底下定义的函数可以在函数名之后放置括号()，比如foo()来调用。</span>
+<span class="comment">// 而foo仅仅是一个函数表达式`function(){ /* code */ }`的引用。</span>
+<span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{ <span class="comment">/* code */</span>}
+
+<span class="comment">// 那么是否可以在函数表达式之后直接使用()来调用？</span>
+<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{ <span class="comment">/* code */</span> }(); <span class="comment">// SyntaxError: Unexpected token (</span>
+</code></pre><p>上面代码执行后就会抛出一个错误（catch）。当脚本解释器在全局命名空间或者函数内部遇到关键字<code>function</code>的时候，默认地，解释器认为这是一个函数声明语句（<a href="https://developer.mozilla.org/en/JavaScript/Reference/Statements/function" target="_blank" rel="external">function declaraction</a>），而非函数表达式（<a href="https://developer.mozilla.org/en/JavaScript/Reference/Operators/Special/function" target="_blank" rel="external">function expression</a>）。如果没有明确地告知解释器<code>function(){}()</code>是一个函数表达式，解释器将认为这是一个函数声明，并且声明没有指定函数的名字。由于函数声明时必需为指定函数的名称，所以解释器抛出<a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/SyntaxError" target="_blank" rel="external">语法错误</a>（SyntaxError）。</p>
+<h3 id="题外话：函数，括号以及语法错误">题外话：函数，括号以及语法错误</h3><p>有趣的是，既然是由于缺乏函数名称而导致语法错误，那么只要指定一个函数名字不就通过了？解释器依然会抛出一个语法错误提示，但却是由于不同的原因。当括号放置在函数表达式后，此括号即为括号运算符，表示调用函数；然而当括号放置在语句之后意味着分离括号前面与括号中的内容，此时括号仅仅做为分组表示（即用于改变运算的优先关系）。</p>
+<pre><code><span class="comment">// 照理说底下语句是有效。但解释器认为这依然是一个函数声明语句。</span>
+<span class="comment">// 后面的括号是分组操作，由于括号中没有内容，所以解释器抛出异常。</span>
+<span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">()</span></span>{ <span class="comment">/* code */</span> }(); <span class="comment">// SyntaxError: Unexpected token )</span>
+
+<span class="comment">// 既然由于括号内没有内容导致异常，那么只要在括号内加入内容不就可以了...</span>
+<span class="comment">// 但是函数依然没有执行</span>
+<span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">()</span></span>{ <span class="comment">/* code */</span> }( <span class="number">1</span> );
+
+<span class="comment">// 上面的语句等价与一个函数声明，紧接这一个与函数完全无关的表达式。</span>
+<span class="comment">// 这是解释器所看到的：</span>
+<span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">()</span></span>{ <span class="comment">/* code */</span> }
+
+( <span class="number">1</span> );
+</code></pre><p>你可以访问Dmitry A. Soshnikove对于此运算内容翔实的文章：<a href="http://dmitrysoshnikov.com/ecmascript/chapter-5-functions/#question-about-surrounding-parentheses" target="_blank" rel="external">ECMA-262-3 in detail. Chapter 5. Functions</a>。</p>
+<p><a name="iife"></a></p>
+
+<h3 id="立即执行函数表达式（IIFE）">立即执行函数表达式（IIFE）</h3><p>幸运的是，可以简单地修复上述的语法错误问题。被广为接受的修复方式是使用括号明确告诉解释器这个是一个函数表达式。因为在JavaScript中，<strong>括号无法包含语句</strong>。因此，当解释器遇到括号中的<code>function</code>关键字时，将认为这是一个函数表达式，而非函数声明。</p>
+<pre><code><span class="comment">// 这两种写法都可以立即执行一个函数表达式，同时创建了一个私有作用域</span>
+(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{ <span class="comment">/* code */</span> }()); <span class="comment">// Crockford 推荐这种写法</span>
+(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{ <span class="comment">/* code */</span> })(); <span class="comment">// 但是这种也一样有效</span>
+
+<span class="comment">// 由于括号或者强迫操作符用于让解释器可正确区分函数表达式与函数声明，所以在解释器可以正确区分的地方，括号就可以省略</span>
+<span class="comment">// 不过请查看下面的重要说明</span>
+<span class="keyword">var</span> i = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>{ <span class="keyword">return</span> <span class="number">10</span>; }();
+<span class="literal">true</span> &amp;&amp; <span class="function"><span class="keyword">function</span><span class="params">()</span></span>{ <span class="comment">/* code */</span> }();
+<span class="number">0</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span></span>{ <span class="comment">/* code */</span> }();
+
+<span class="comment">// 如果不在意函数的返回值或者不在意代码的可读性，使用一元操作符亦是有效的</span>
+!<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{ <span class="comment">/* code */</span> }();
+~<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{ <span class="comment">/* code */</span> }();
+-<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{ <span class="comment">/* code */</span> }();
++<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{ <span class="comment">/* code */</span> }();
+
+<span class="comment">// 以下是另外一种形式（@kuvos提供）。</span>
+<span class="keyword">new</span> <span class="function"><span class="keyword">function</span><span class="params">()</span></span>{ <span class="comment">/* code */</span> }
+<span class="keyword">new</span> <span class="function"><span class="keyword">function</span><span class="params">()</span></span>{ <span class="comment">/* code */</span> }() <span class="comment">// 括号仅在传参时需要</span>
+</code></pre><h3 id="关于上述代码中括号的一个重要说明">关于上述代码中括号的一个重要说明</h3><p>虽然在上述那些括号可有可无（因为解释器可以正确地识别他们是函数表达式），但还是建议在赋值语句中带上括号，作为一种不成文的约定。</p>
+<p>括号在这种情况下表示函数将会立即被执行，同时，执行结果返回的函数执行的结果而非函数本身。通过这个约定，碰到一个函数表达式时就没有必要滚动到函数表达式的末尾（函数可能非常长）去查看是否立即执行了这个函数。</p>
+<p>根据以往的经验，编写清晰的代码在技术上可以避免JavaScript解释器抛语法错误异常，同时也可以避免遇到「屎一样的BUG」。</p>
+<h3 id="使用闭包（closures）保存状态">使用闭包（closures）保存状态</h3><p>实参可以传递给函数名（通过函数声明），也可以传递给立即调用的函数表达式。同时，函数（outer）可以在内部定义另外一个函数（inner），此时内部函数（inner）可以访问外部函数(outer)的传递进来参数和变量（这种关系被称为「闭包」）。结合上述的两种特性，我们可以使用「立即执行函数表达式」来锁定变量值并保存状态。</p>
+<p>如果想要了解更多关于「闭包」的内容，请访问：<a href="http://skilldrick.co.uk/2011/04/closures-explained-with-javascript/" target="_blank" rel="external">Closures explained with JavaScript</a>。</p>
+<pre><code><span class="comment">// 底下例子不会按照你的预期工作，因为`i`的值没有被锁定。</span>
+<span class="comment">// 相反，当任意一个链接被点击时（在循环结束之后），弹出的值中i的值都等于elems.length。</span>
+<span class="comment">// 这是因为在链接被点击的时候（循环之后），`i`的值就是elems.length</span>
+<span class="keyword">var</span> elems = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'a'</span>);
+<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; elems.length; i++) {
+    elems[i].addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(e)</span> </span>{
+        e.preventDefault();
+        alert(<span class="string">'I am link #'</span> + i);
+    }, <span class="string">'false'</span>);
+}
+
+<span class="comment">// 这个例子如预期工作，因为在IIFE内部，`i`的值被锁定为`lockedInIndex`。</span>
+<span class="comment">// 即使在循环之后`i`的值为元素的总个数，但是在IIFE中，`lockedInIndex`的值永远都是IIFE被调用的时候传入的`i`的值。</span>
+<span class="comment">// 也就是说循环时每次传入的`i`(0, 1...)都在IIFE调用是固定为`lockedInIndex`，不会被改变。</span>
+<span class="comment">// 所以每个链接被点击时都获取到了期望的`i`值</span>
+<span class="keyword">var</span> elems = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'a'</span>);
+<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; elems.length; i++) {
+    (<span class="function"><span class="keyword">function</span> <span class="params">(lockedInIndex)</span> </span>{
+        elems[i].addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(e)</span> </span>{
+            e.preventDefault();
+            alert(<span class="string">'I am link #'</span> + lockedInIndex);
+        }, <span class="string">'false'</span>);
+    })(i);
+}
+
+<span class="comment">// 也可以采用这种方式。在click的回掉函数上使用IIFE锁定`i`的值并返回一个函数。</span>
+<span class="comment">// 两种方式都可以按照预期的想法工作。但是上面的例子更易阅读。</span>
+<span class="keyword">var</span> elems = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'a'</span>);
+<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; elems.length; i++) {
+    elems[i].addEventListener(<span class="string">'click'</span>, (<span class="function"><span class="keyword">function</span> <span class="params">(lockedInIndex)</span> </span>{
+        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="params">(e)</span> </span>{
+            e.preventDefault();
+            alert(<span class="string">'I am link #'</span> + lockedInIndex);
+        };
+    })(i), <span class="string">'false'</span>);
+}
+</code></pre><p>注意上述代码中的最后两个例子，<code>lockedInIndex</code>可以正确的使用<code>i</code>的值。使用<code>lockedInIndex</code>作为立即执行函数表达式的参数令代码看起来更易理解。</p>
+<p>立即执行函数表达式的另外一个优点在于，由于立即执行函数表达式并未使用标识符来命名，即未命名或者匿名的，所以可以不污染全局命名空间的情况使用。</p>
+<h3 id="那么术语「自执行匿名函数」哪里不对？">那么术语「自执行匿名函数」哪里不对？</h3><p>在上文中已经多次提到我所建议的术语「立即执行函数表达式」，或者简写为「IIFE」，但是并未明确说明。我将他念成「iffi」（亦非？）。</p>
+<p>什么是「立即执行函数表达式」？顾名思义，她是一个被立即执行的函数表达式。</p>
+<p>我很希望看到JavaScript社区接受「立即执行函数表达式」（IIFE），在他们的文章中使用这个术语。因为我觉得IIFE让这个概念更加清晰，也因为术语「自执行匿名函数」并不准确：</p>
+<pre><code><span class="comment">// 这是一个「自执行函数」。函数在内部调用本身，形成递归。</span>
+<span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">()</span> { <span class="title">foo</span><span class="params">()</span>; }</span>
+
+<span class="comment">// 这是一个「自执行匿名函数」。因为没有命名，所以在函数内部使用arguments.callee来调用自身。</span>
+var foo = <span class="function"><span class="keyword">function</span><span class="params">()</span> { <span class="title">arguments</span>.<span class="title">callee</span><span class="params">()</span>; };</span>
+
+<span class="comment">// 这应该就是一个所谓的「自执行匿名函数」了，但仅限于`foo`标识符引用这个函数。</span>
+<span class="comment">// 如果foo指向了其他的值，那么这个就成为了「曾经是自执行匿名函数」了。</span>
+var foo = <span class="function"><span class="keyword">function</span><span class="params">()</span> { <span class="title">foo</span><span class="params">()</span>; };</span>
+
+<span class="comment">// 这个语句被称为「自执行匿名函数」。但是她并非自执行，因为她根本没有调用她本身。这是一个立即执行函数。</span>
+(<span class="function"><span class="keyword">function</span><span class="params">()</span>{ /* <span class="title">code</span> */ }<span class="params">()</span>);</span>
+
+<span class="comment">// 为一个函数表达式指定名字在调试的时候异常有由，在调用栈里可以查找到。</span>
+<span class="comment">// 然后一旦指定名字，这就是一个非匿名函数了。</span>
+(<span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">()</span>{ /* <span class="title">code</span> */ }<span class="params">()</span>);</span>
+
+<span class="comment">// IIFE同样可以调用自身，但或许这不是一个非常有用的形式。</span>
+(<span class="function"><span class="keyword">function</span><span class="params">()</span>{ <span class="title">arguments</span>.<span class="title">callee</span><span class="params">()</span>; }<span class="params">()</span>);</span>
+(<span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">()</span>{ <span class="title">foo</span><span class="params">()</span>; }<span class="params">()</span>);</span>
+
+<span class="comment">// 最后一提，以下这个语句在BlackBerry5中会异常，因为在一个具名函数内部，此变量引用的函数还未生成是undefined。有趣吧？</span>
+(<span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">()</span>{ <span class="title">foo</span><span class="params">()</span>; }<span class="params">()</span>);</span>
+</code></pre><p>希望上述的例子可以验证「自执行」这个词是令人误解的。虽然函数一样是执行了，但并非是函数执行她本身。同时，「匿名」也无须特别指出，因为一个<strong>立即执行函数表达式</strong>可以匿名也可以具有名字。最后，我比较喜欢「invoked」而非「executed」在于押韵，我想「IIFE」看起来念起来比「IEFE」顺。</p>
+<p>这就是我的想法。</p>
+<p>由于<code>arguments.callee</code>在ECMAScript 5 strict mode中已被弃用，所以从技术上说一个<em>自执行匿名函数</em>是不可能实现的。</p>
+<h3 id="最后的题外话：模块模式（Module_Pattern）">最后的题外话：模块模式（Module Pattern）</h3><p>当我在论述函数表达式的时候，可以漏掉了模块模式。若你对JavaScript里面的模块模式不熟悉的话，那么查看文中第一个例子，那个例子就是接近于模块模式。之所以说接近，是由于模块模式返回的是一个对象，而第一个例子返回的是函数。若第一个例子返回值改成一个对象，也就通常实现单例模式（Singleton Pattern）的方法，如下代码所示：</p>
+<pre><code><span class="comment">// 创建一个立即执行的匿名函数表达式，并将函数的返回值赋予一个变量。</span>
+<span class="comment">// 与第一例子相比，这个方法略去了`makeWhatever`中间函数。</span>
+
+<span class="comment">// 就像上面重要提示中所述，尽管在这个例子中，外面的括号是非必需的。</span>
+<span class="comment">// 但加上括号可以明确这是以立即执行的函数，将函数的结果赋予变量，而非将函数赋予变量。</span>
+<span class="keyword">var</span> counter = (<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{
+    <span class="keyword">var</span> i = <span class="number">0</span>;
+
+    <span class="keyword">return</span> {
+        <span class="keyword">get</span>: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{
+            <span class="keyword">return</span> i;
+        },
+        <span class="keyword">set</span>: <span class="function"><span class="keyword">function</span> <span class="params">(val)</span> </span>{
+            i = val;
+        },
+        increment: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{
+            <span class="keyword">return</span> ++i;
+        }
+    };
+}());
+
+<span class="comment">// `counter`是一个带有成员的对象，在此例中她的成员都是函数。</span>
+
+counter.<span class="keyword">get</span>(); <span class="comment">// 0</span>
+counter.<span class="keyword">set</span>(<span class="number">3</span>);
+counter.increment(); <span class="comment">// 4</span>
+counter.increment(); <span class="comment">// 5</span>
+
+counter.i; <span class="comment">// undefined (`i` 并非`counter`的成员)</span>
+i; <span class="comment">// ReferenceError: i未定义 (仅存在于匿名函数表达式形成的私有作用域中，即闭包)</span>
+</code></pre><p>[译注] <a href="http://jsfiddle.net/kDBdu/" target="_blank" rel="external">例子的JSFiddle链接</a></p>
+<p>模块模式不仅仅强大并且简洁明了。使用很少的代码就可以有效地将方法和属性封装起来，与此同时不污染全局命名空间以及创建私有作用域。</p>
+<h2 id="扩展阅读">扩展阅读</h2><p>希望本文可以解答你的一些疑虑。当然，若阅读完本文之后你的疑问比之前更多了，你可以阅读以下列表的文章以探索更多关于函数以及模块模式：</p>
+<ul>
+<li><a href="http://dmitrysoshnikov.com/ecmascript/chapter-5-functions/#question-about-surrounding-parentheses" target="_blank" rel="external">ECMA-262-3 in detail. Chapter 5. Functions</a> - Dmitry A. Soshinikov</li>
+<li><a href="https://developer.mozilla.org/en/JavaScript/Reference/Functions_and_function_scope" target="_blank" rel="external">Functions and function scope</a> - Mozilla Developer Network</li>
+<li><a href="http://kangax.github.com/nfe/" target="_blank" rel="external">Named function expressions</a> - Named function expressions - Juriy “kangax” Zaytsev</li>
+<li><a href="http://www.adequatelygood.com/2010/3/JavaScript-Module-Pattern-In-Depth" target="_blank" rel="external">JavaScript Module Pattern: In-Depth</a> - JavaScript Module Pattern: In-Depth - Ben Cherry</li>
+<li><a href="http://skilldrick.co.uk/2011/04/closures-explained-with-javascript/" target="_blank" rel="external">Closures explained with JavaScript</a> - Nick Morgan</li>
+</ul>
+<p>最后感谢 Asen Bozhilov 和 John David Dalton 的技术建议以及Nick Morgan的深刻见解。如果你由任何想法，请在评论里发表，谢谢！</p>
+
+        
+
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/iife/">
+                #IIFE
+              </a>
+            
+              <a href="/tags/javascript/">
+                #JavaScript
+              </a>
+            
+              <a href="/tags/翻译/">
+                #翻译
+              </a>
+            
+          </div>
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+
+
+
+  
+
+    
+    
+    
+
+    
+    
+
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              测试驱动开发实践：JavaScript字符串的复制函数
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              发表于 2013-08-13
+            
+          </span>
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2013/tdd-in-practice-javascript-string-duplicate/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2013/tdd-in-practice-javascript-string-duplicate/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          <p>在<a href="http://book.douban.com/subject/10483528/" target="_blank" rel="external">《测试驱动的JavaScript开发》</a>一书第四章中提到「从测试中学习」，这是一个很值得推荐的学习方式。如果是为自己的应用代码设计断言编写测试，可以让我们在动手写代码之前清楚我们到底需要做什么，并且之后的重构可以有保证的进行；如果是为他人的应用代码设计断言编写测试，那将是很好的机会去学习他人的代码编写方式。</p>
+<p>比如学习流行的JavaScript库（例如<a href="http://underscorejs.org" target="_blank" rel="external">Underscore.js</a>的时候可以采用这种方法。为<code>Underscore.js</code>的函数编写测试，让测试通过，然后再自己着手编写函数，再进行测试；然后再比对<code>Underscore.js</code>里函数的实现。此方法一方面可以练习编程能力，同时可以学习流行库里久经考验的写法。</p>
+<p>继上文<a href="http://code.iissnan.com/quick-start-with-qunit.uic" target="_blank" rel="external">「Qunit快速上手」</a>之后，本文将展示一次测试驱动开发实践：实现一个复制字符串本身的函数。采用的单元测试工具是<a href="http://qunitjs.com" target="_blank" rel="external">QUnit</a>。</p>
+<p>测试驱动开发遵循<a href="http://code.iissnan.com/tdd-iteration.uic" target="_blank" rel="external">四个迭代步骤</a>：</p>
+<ol>
+<li>编写测试代码</li>
+<li>运行测试，观察测试失败</li>
+<li>使测试通过</li>
+<li>重构</li>
+</ol>
+<h2 id="步骤一、测试驱动，先编写测试">步骤一、测试驱动，先编写测试</h2><p>JavaScript字符串类（String）并未提供一个复制字符串本身的方法。我们要实现的是复制字符串本身，即函数应该可以将”abcd”复制成<code>n * &quot;abcd&quot;</code>，其中n代表要复制的次数。从代码的角度来看就是：</p>
+<a id="more"></a>
+<pre><code><span class="string">"abcd"</span>.duplicate(<span class="number">2</span>); <span class="regexp">//</span> <span class="string">"abcdabcd"</span>
+</code></pre><p>同时，当n的值小于等于1时，仅返还字符串本身。</p>
+<pre><code><span class="string">"abcd"</span>.duplicate(<span class="number">0</span>); <span class="regexp">//</span> <span class="string">"abcd"</span>
+</code></pre><p>这便是我们的断言。明确了函数的目标之后，我们就可以编写测试脚本（假定测试脚本名称为<code>string-test.js</code>，并且与源码<code>string.js</code>在同一目录下）：</p>
+<pre><code>test(<span class="string">"Function: duplicate"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    <span class="comment">// 当n &amp;lt;= 1时</span>
+    equal(<span class="string">"abcd"</span>.duplicate(-<span class="number">1</span>), <span class="string">"abcd"</span>, <span class="string">"It should be '</span><span class="transposed_variable">abcd'</span> when n &amp;lt; <span class="number">1</span><span class="string">");
+    equal("</span>abcd<span class="string">".duplicate(0), "</span>abcd<span class="string">", "</span>It should be <span class="string">'abcd'</span> when n &amp;lt; <span class="number">1</span><span class="string">");
+    equal("</span>abcd<span class="string">".duplicate(1), "</span>abcd<span class="string">", "</span>It should be <span class="string">'abcd'</span> when n = <span class="number">1</span><span class="string">");
+
+    // 复制字符串2次、3次
+    equal("</span>abcd<span class="string">".duplicate(2), "</span>abcdabcd<span class="string">", "</span>It should be <span class="string">'abcdabcd'</span>);
+    equal(<span class="string">"abcd"</span>.duplicate(<span class="number">3</span>), <span class="string">"abcdabcdabcd"</span>, <span class="string">"It should be '</span><span class="transposed_variable">abcdabcdabcd'</span>);
+});
+</code></pre><p>我们设计了5个断言。其中，前三个断言测试当n小于1的情况；最后两个测试是否正确的对字符串进行了n次复制。</p>
+<h2 id="步骤二、运行测试，观察测试失败">步骤二、运行测试，观察测试失败</h2><p>这一步将确认测试用例，确保测试用例的准确性。在执行测试的html中（假设是<code>tests.html</code>）引用测试脚本：</p>
+<pre><code><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;<span class="title">html</span>&gt;</span>
+<span class="tag">&lt;<span class="title">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">title</span>&gt;</span>QUnit Example<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">href</span>=<span class="value">"qunit/qunit.css"</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">body</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"qunit"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"qunit-fixture"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"qunit/qunit.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+    <span class="comment">&lt;!-- 源文件 --&gt;</span>
+
+    <span class="comment">&lt;!-- 测试脚本 --&gt;</span>
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"string-test.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre><p>在浏览器中打开<code>tests.html</code>执行测试，可以看到测试失败了，因为我们还没有编写源代码。</p>
+<h2 id="步骤三、使测试通过">步骤三、使测试通过</h2><p>有了测试的保证，此时，我们可以采用最为直接的方式来实现功能（假定源代码文件为<code>string.js</code>）：</p>
+<pre><code>(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+    <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">String</span>.prototype.duplicate !== <span class="string">"function"</span>) {
+    <span class="built_in">String</span>.prototype.duplicate = <span class="function"><span class="keyword">function</span> <span class="params">(n)</span> </span>{
+        <span class="keyword">var</span> duplicated = <span class="string">""</span>;
+        <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) { <span class="keyword">return</span> <span class="keyword">this</span>.toString(); }
+            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; n; i++) {
+                duplicated += <span class="keyword">this</span>;
+            }
+            <span class="keyword">return</span> duplicated;
+        };
+    }
+}());
+</code></pre><p>新建一个字符串<code>duplicated</code>，循环n次，每次循环中添加待复制字符串（this）到<code>duplicated</code>中。</p>
+<p>源代码编写完成后，在<code>tests.html</code>中引用源代码文件并在浏览器中运行测试。</p>
+<pre><code><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;<span class="title">html</span>&gt;</span>
+<span class="tag">&lt;<span class="title">head</span>&gt;</span>
+<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">title</span>&gt;</span>QUnit Example<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">href</span>=<span class="value">"qunit/qunit.css"</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">body</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"qunit"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"qunit-fixture"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"qunit/qunit.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+    <span class="comment">&lt;!-- 源文件 --&gt;</span>
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"string.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+    <span class="comment">&lt;!-- 测试脚本 --&gt;</span>
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"string-test.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre><p>如果有遇到断言失败，说明源代码中逻辑存在问题，需要进行检查修改。</p>
+<h2 id="步骤四、重构">步骤四、重构</h2><p>回看第三步的代码，在循环中每次让<code>duplicated</code>加上待复制字符串<code>this</code>。而JavaScript字符串的相加操作按照以下步骤进行：</p>
+<ol>
+<li>创建存储this的字符串</li>
+<li>创建存储duplicated当前值的字符串</li>
+<li>创建存储this + duplicated结果的字符串</li>
+<li>把this复制到结果字符串中</li>
+<li>把duplicated当前的内容复制到结果字符串中</li>
+<li>更新duplicated，使他指向结果字符串</li>
+</ol>
+<p>从步骤上可以看出字符串相加操作的效率偏低。所以考虑到数组的<code>join</code>方法，将代码重构如下： </p>
+<pre><code>(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{
+    <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">String</span>.prototype.duplicate !== <span class="string">"function"</span>) {
+        <span class="built_in">String</span>.prototype.duplicate = <span class="function"><span class="keyword">function</span> <span class="params">(n)</span> </span>{
+            <span class="keyword">var</span> duplicated = [];
+            <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) { <span class="keyword">return</span> <span class="keyword">this</span>.toString(); }
+            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; n; i++) {
+                duplicated.push(<span class="keyword">this</span>);
+            }
+            <span class="keyword">return</span> duplicated.join(<span class="string">""</span>);
+        };
+    }
+}());
+</code></pre><p>重构的代码中，新建一个数组，循环n次将待复制的字符串添加到数组中，最后通过数组的<code>join</code>。再次运行测试，保证重构可以通过测试。</p>
+<h2 id="完成一次测试驱动迭代">完成一次测试驱动迭代</h2><p>到这里就是一个测试驱动开发的完整迭代：编写测试——运行测试，观察失败——使测试通过——重构。</p><p></p>
+<h2 id="后续">后续</h2><p>后续对于<code>duplicate</code>函数的修改都可以在<code>string-test.js</code>中用例的保证下进行安全的重构。比如我们再观察步骤四中重构后的代码：将待复制字符串作为数组的元素并采用数组的<code>join</code>方法（传入””参数）将字符串连接以达到复制的目的。换种思路，如果我们能够将待复制字符串作为join方法的参数，那么只要新建一个长度为<code>n + 1</code>的数组就可以达到复制的目的。相比使用循环添加元素到数组中，后者从算法和代码量都可以达到精简！最终版本的<code>duplcated</code>方法如下：</p>
+<pre><code><span class="list">(<span class="keyword">function</span> <span class="list">()</span> <span class="collection">{
+    if <span class="list">(<span class="keyword">typeof</span> String.prototype.duplicate !== <span class="string">"function"</span>)</span> <span class="collection">{
+        String.prototype.duplicate = function <span class="list">(<span class="keyword">n</span>)</span> <span class="collection">{
+            return n &lt;= <span class="number">1</span> ? this.toString<span class="list">()</span> : new Array<span class="list">(<span class="keyword">n+1</span>)</span>.join<span class="list">(<span class="keyword">this</span>)</span><span class="comment">;</span>
+        }</span><span class="comment">;</span>
+    }</span>
+}</span><span class="list">()</span>)</span><span class="comment">;</span>
+</code></pre><p>运行测试，确保重构的代码能够通过测试</p>
+
+        
+
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/javascript/">
+                #JavaScript
+              </a>
+            
+              <a href="/tags/qunit/">
+                #Qunit
+              </a>
+            
+              <a href="/tags/tdd/">
+                #TDD
+              </a>
+            
+              <a href="/tags/testing/">
+                #Testing
+              </a>
+            
+          </div>
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+
+
+
+  
+
+    
+    
+    
+
+    
+    
+
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              [译] 使用对象字面量组织代码
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              发表于 2013-08-12
+            
+          </span>
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2013/using-objects-to-orgnize-your-code/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2013/using-objects-to-orgnize-your-code/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          <p>原文：<a href="http://rmurphey.com/blog/2009/10/15/using-objects-to-organize-your-code/" target="_blank" rel="external">Using Objects to Organize Your Code</a></p>
+<p>本文是<a href="http://jsmag.com/" target="_blank" rel="external">JSMag</a> 2009年3月刊的一篇文章的改进版。</p>
+<p>当你写过基于jQuery的代码应用片段后，开始着手开发交互更加复杂的应用时，你会发现代码很快变得杂乱并且难于调试。本文将展示如何使用对象字面量模式，依据功能行为来开发更加复杂的交互。</p>
+<p>在过去的几年里，JavaScript库让了初级开发者可以快速在他们的站点做出精细的交互。一些库，比如jQuery，拥有非常简单的语法，让零经验的开发者也能够快速的做出花哨的页面。这些花哨的特效，其中不乏精细之作，大多数实现只要在Google上花些时间就能找到。复制粘贴，使用一个插件再加上一些自定义代码，组成的页面看起来就很不错，然后就可以在简历上将jQuery加入技能之列。</p>
+<p>但是，需求总在不断改变。之前实现的代码现在需要在三个元素或者是个元素上应用；之前的代码需要在另外一个仅有一些轻微不同（比如ID不同）的应用上重用……我们已经看到那些可以复制粘贴实现花哨功能的代码片段让jQuery（以及其他JavaScript库）看起来十分易用。但这些代码片段之外（这些代码片段仅仅是代码片段，对吧？），你还需要去设计组织你的代码当你需要的不仅仅是引用一个插件或者做一些<code>show()</code>/<code>hide()</code>。</p>
+<h2 id="对象字面量模式">对象字面量模式</h2><p>对象字面量模式可以根据功能组成来组织代码。同时，这个模式可以保证代码不会「污染全局命名空间」，不污染全局命名空间被认为是适用于所有项目，特别在大型项目中的一个最佳实践。这个模式强迫你在着手编写代码之前思考代码将做什么以及怎么做。对象字面量模式可以封装所有相关的行为，如下代码所示：</p>
+<a id="more"></a>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+</pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myObjectLiteral = &#123;</span>
+<span class="line">    myBehavior1 : <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span>
+<span class="line">        <span class="comment">/* do something */</span></span>
+<span class="line">    &#125;,</span>
+<span class="line"></span>
+<span class="line">    myBehavior2 : <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span>
+<span class="line">        <span class="comment">/* do something else */</span></span>
+<span class="line">    &#125;</span>
+<span class="line">&#125;;</span>
+</pre></td></tr></table></figure>
+<p>现在来看一个例子：假设有一个<code>#myFeatrue</code>列表，当列表的的项被点击时，显示/隐藏项的子元素div中的内容，同时隐藏其他项的内容。实现的jQuery代码片段如下所示：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+<span class="line">11</span>
+<span class="line">12</span>
+</pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span>
+<span class="line">    $(<span class="string">'#myFeature li'</span>)</span>
+<span class="line">        .append(<span class="string">'&amp;lt;div/&amp;gt;'</span>)</span>
+<span class="line">        .each(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span>
+<span class="line">            $(<span class="keyword">this</span>).find(<span class="string">'div'</span>)</span>
+<span class="line">                .load(<span class="string">'foo.php?item='</span> + $(<span class="keyword">this</span>).attr(<span class="string">'id'</span>));</span>
+<span class="line">        &#125;)</span>
+<span class="line">        .click(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span>
+<span class="line">            $(<span class="keyword">this</span>).find(<span class="string">'div'</span>).show();</span>
+<span class="line">            $(<span class="keyword">this</span>).siblings().find(<span class="string">'div'</span>).hide();</span>
+<span class="line">        &#125;);</span>
+<span class="line">&#125;);</span>
+</pre></td></tr></table></figure>
+<p>非常简单。但是，上面的例子中有几个地方后面可能会被改动。比如说，URL的构成方法、内容的存放位置以及显示隐藏的特效。使用对象字面量的方法，可以上述的需求更加简明，代码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+<span class="line">11</span>
+<span class="line">12</span>
+<span class="line">13</span>
+<span class="line">14</span>
+<span class="line">15</span>
+<span class="line">16</span>
+<span class="line">17</span>
+<span class="line">18</span>
+<span class="line">19</span>
+<span class="line">20</span>
+<span class="line">21</span>
+<span class="line">22</span>
+<span class="line">23</span>
+<span class="line">24</span>
+<span class="line">25</span>
+<span class="line">26</span>
+<span class="line">27</span>
+<span class="line">28</span>
+<span class="line">29</span>
+<span class="line">30</span>
+<span class="line">31</span>
+<span class="line">32</span>
+<span class="line">33</span>
+<span class="line">34</span>
+<span class="line">35</span>
+<span class="line">36</span>
+<span class="line">37</span>
+<span class="line">38</span>
+<span class="line">39</span>
+</pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myFeature = &#123;</span>
+<span class="line">    config : &#123;</span>
+<span class="line">        wrapper : <span class="string">'#myFeature'</span>,</span>
+<span class="line">        container : <span class="string">'div'</span>,</span>
+<span class="line">        urlBase : <span class="string">'foo.php?item='</span></span>
+<span class="line">    &#125;,</span>
+<span class="line"></span>
+<span class="line">    init : <span class="function"><span class="keyword">function</span><span class="params">(config)</span> </span>&#123;</span>
+<span class="line">        $.extend(myFeature.config, config);</span>
+<span class="line">        $(myFeature.config.wrapper).find(<span class="string">'li'</span>).</span>
+<span class="line">            each(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span>
+<span class="line">                myFeature.getContent($(this));</span>
+<span class="line">            &#125;).</span>
+<span class="line">            click(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span>
+<span class="line">                myFeature.showContent($(this));</span>
+<span class="line">            &#125;);</span>
+<span class="line">    &#125;,</span>
+<span class="line"></span>
+<span class="line">    buildUrl : <span class="function"><span class="keyword">function</span><span class="params">(<span class="variable">$li</span>)</span> </span>&#123;</span>
+<span class="line">        <span class="keyword">return</span> myFeature.config.urlBase + <span class="variable">$li</span>.attr(<span class="string">'id'</span>);</span>
+<span class="line">    &#125;,</span>
+<span class="line"></span>
+<span class="line">    getContent : <span class="function"><span class="keyword">function</span><span class="params">(<span class="variable">$li</span>)</span> </span>&#123;</span>
+<span class="line">        <span class="variable">$li</span>.append(myFeature.config.container);</span>
+<span class="line">        <span class="keyword">var</span> url = myFeature.buildUrl(<span class="variable">$li</span>);</span>
+<span class="line">        <span class="variable">$li</span>.find(myFeature.config.container).load(url);</span>
+<span class="line">    &#125;,</span>
+<span class="line"></span>
+<span class="line">    showContent : <span class="function"><span class="keyword">function</span><span class="params">(<span class="variable">$li</span>)</span> </span>&#123;</span>
+<span class="line">        <span class="variable">$li</span>.find(<span class="string">'div'</span>).show();</span>
+<span class="line">        myFeature.hideContent(<span class="variable">$li</span>.siblings());</span>
+<span class="line">    &#125;,</span>
+<span class="line"></span>
+<span class="line">    hideContent : <span class="function"><span class="keyword">function</span><span class="params">(<span class="variable">$elements</span>)</span> </span>&#123;</span>
+<span class="line">        <span class="variable">$elements</span>.find(<span class="string">'div'</span>).hide();</span>
+<span class="line">    &#125;</span>
+<span class="line">&#125;;</span>
+<span class="line"></span>
+<span class="line">$(document).ready(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123; myFeature.init(); &#125;);</span>
+</pre></td></tr></table></figure>
+<p>在如此简单的例子上，使用如上所述的对象字面量方法反而使代码显得更加冗长。坦白的讲，对象字面量方法并不会让代码更为精简，他所擅长的让你不会因维护代码而头痛。通过使用对象字面量模式，我们将代码分成各个逻辑部分，从而更容易的定位潜在易被修改的代码。同时，我们提供了默认的配置参数并且可以通过<code>init</code>方法（传入config对象）进行修改，让代码更易扩展。最后，这段代码的结构具备一定的自解释能力，可以快速的看出这段代码的用途。当以下需求不断变化改进的时候，此方法的益处将越来越明显。</p>
+<p>注：推荐一本学习JavaScript对象、属性和方法的书籍：<a href="http://www.amazon.com/Object-Oriented-JavaScript-high-quality-applications-libraries/dp/1847194141" target="_blank">《Object-Oriented JavaScript: Create scalable, reusable high-quality JavaScript applications and libraries》</a>，由Stoyan Stefanov著。你可能也需要了解JSON（JavaScript Object Notation）的知识。</p>
+<h2 id="更深入的例子">更深入的例子</h2><p>[译注] <a href="http://jsfiddle.net/hNQRS/" target="_blank">JSFiddle完整例子</a></p>
+<p>在这个例子中，我们的任务要创建一个由多个区域（Section）组成的UI，每个区域（Section）包含着多个内容。任意点击一个区域将会显示此区域底下的列表；点击列表项将会在显示对应的内容。当一个区域显示的时候，区域中的第一个列表项应该被展示。当页面载入完成时，第一个区域应该被展示。</p>
+<h3 id="第一步、构建HTML">第一步、构建HTML</h3><p>结构良好的HTML代码是编写优秀JavaScript代码的重要前提，所以这一步我们开始思考如何构建需求对应的HTML代码。HTML代码应该具备：</p>
+<ul>
+<li>当JavaScript被禁用时，亦可正常工作</li>
+<li>提供明了的DOM结构，以便JavaScript调用</li>
+<li>避免多余的ID和class属性（你可能意料不到我们需要的id/class属性是如此之少）</li>
+</ul>
+<p>有了上述的准则之后，我们着手编写HTML(<a href="”http://jsfiddle.net/Z4NHx/”" target="”_blank”">JSFiddle预览地址</a>)：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+<span class="line">11</span>
+<span class="line">12</span>
+<span class="line">13</span>
+<span class="line">14</span>
+<span class="line">15</span>
+<span class="line">16</span>
+<span class="line">17</span>
+<span class="line">18</span>
+<span class="line">19</span>
+<span class="line">20</span>
+<span class="line">21</span>
+<span class="line">22</span>
+<span class="line">23</span>
+<span class="line">24</span>
+<span class="line">25</span>
+<span class="line">26</span>
+<span class="line">27</span>
+<span class="line">28</span>
+<span class="line">29</span>
+<span class="line">30</span>
+<span class="line">31</span>
+<span class="line">32</span>
+<span class="line">33</span>
+<span class="line">34</span>
+<span class="line">35</span>
+<span class="line">36</span>
+<span class="line">37</span>
+<span class="line">38</span>
+<span class="line">39</span>
+</pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">h1</span>&gt;</span>This is My Nifty Feature<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span>
+<span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"myFeature"</span>&gt;</span></span>
+<span class="line">  <span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"sections"</span>&gt;</span></span>
+<span class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span></span>
+<span class="line">      <span class="tag">&lt;<span class="title">h2</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"/section/1"</span>&gt;</span>Section 1<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">h2</span>&gt;</span></span>
+<span class="line">      <span class="tag">&lt;<span class="title">ul</span>&gt;</span></span>
+<span class="line">         <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">h3</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"/section/1/content/1"</span>&gt;</span>Section 1 Title 1<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">h3</span>&gt;</span></span>
+<span class="line">           <span class="tag">&lt;<span class="title">p</span>&gt;</span>The excerpt content for Content Item 1<span class="tag">&lt;/<span class="title">p</span>&gt;</span> <span class="tag">&lt;/<span class="title">li</span>&gt;</span></span>
+<span class="line">         <span class="tag">&lt;<span class="title">li</span>&gt;</span> <span class="tag">&lt;<span class="title">h3</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"/section/1/content/2"</span>&gt;</span>Section 1 Title 2<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">h3</span>&gt;</span></span>
+<span class="line">           <span class="tag">&lt;<span class="title">p</span>&gt;</span>The excerpt content for Content Item 2<span class="tag">&lt;/<span class="title">p</span>&gt;</span> <span class="tag">&lt;/<span class="title">li</span>&gt;</span></span>
+<span class="line">         <span class="tag">&lt;<span class="title">li</span>&gt;</span> <span class="tag">&lt;<span class="title">h3</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"/section/1/content/3"</span>&gt;</span>Section 1 Title 3<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">h3</span>&gt;</span></span>
+<span class="line">            <span class="tag">&lt;<span class="title">p</span>&gt;</span>The excerpt content for Content Item 3<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span>
+<span class="line">         <span class="tag">&lt;/<span class="title">li</span>&gt;</span></span>
+<span class="line">       <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span>
+<span class="line">      <span class="tag">&lt;/<span class="title">li</span>&gt;</span></span>
+<span class="line">      <span class="tag">&lt;<span class="title">li</span>&gt;</span></span>
+<span class="line">        <span class="tag">&lt;<span class="title">h2</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"/section/2"</span>&gt;</span>Section 2<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">h2</span>&gt;</span></span>
+<span class="line">        <span class="tag">&lt;<span class="title">ul</span>&gt;</span></span>
+<span class="line">          <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">h3</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"/section/2/content/1"</span>&gt;</span>Section 2 Title 1<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">h3</span>&gt;</span></span>
+<span class="line">            <span class="tag">&lt;<span class="title">p</span>&gt;</span>The excerpt content for Content Item 1<span class="tag">&lt;/<span class="title">p</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span>
+<span class="line">          <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">h3</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"/section/2/content/2"</span>&gt;</span>Section 2 Title 2<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">h3</span>&gt;</span></span>
+<span class="line">            <span class="tag">&lt;<span class="title">p</span>&gt;</span>The excerpt content for Content Item 2<span class="tag">&lt;/<span class="title">p</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span>
+<span class="line">          <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">h3</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"/section/2/content/3"</span>&gt;</span>Section 2 Title 3<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">h3</span>&gt;</span></span>
+<span class="line">            <span class="tag">&lt;<span class="title">p</span>&gt;</span>The excerpt content for Content Item 3<span class="tag">&lt;/<span class="title">p</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span>
+<span class="line">        <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span>
+<span class="line">      <span class="tag">&lt;/<span class="title">li</span>&gt;</span></span>
+<span class="line">      <span class="tag">&lt;<span class="title">li</span>&gt;</span></span>
+<span class="line">        <span class="tag">&lt;<span class="title">h2</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"/section/3"</span>&gt;</span>Section 3<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">h2</span>&gt;</span></span>
+<span class="line">        <span class="tag">&lt;<span class="title">ul</span>&gt;</span></span>
+<span class="line">          <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">h3</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"/section/3/content/1"</span>&gt;</span>Section 3 Title 1<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">h3</span>&gt;</span></span>
+<span class="line">            <span class="tag">&lt;<span class="title">p</span>&gt;</span>The excerpt content for Content Item 1<span class="tag">&lt;/<span class="title">p</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span>
+<span class="line">          <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">h3</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"/section/3/content/2"</span>&gt;</span>Section 3 Title 2<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">h3</span>&gt;</span></span>
+<span class="line">            <span class="tag">&lt;<span class="title">p</span>&gt;</span>The excerpt content for Content Item 2<span class="tag">&lt;/<span class="title">p</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span>
+<span class="line">          <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">h3</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"/section/3/content/3"</span>&gt;</span>Section 3 Title 3<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">h3</span>&gt;</span></span>
+<span class="line">            <span class="tag">&lt;<span class="title">p</span>&gt;</span>The excerpt content for Content Item 3<span class="tag">&lt;/<span class="title">p</span>&gt;</span> <span class="tag">&lt;/<span class="title">li</span>&gt;</span></span>
+<span class="line">        <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span>
+<span class="line">    <span class="tag">&lt;/<span class="title">li</span>&gt;</span></span>
+<span class="line">  <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span>
+<span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span>
+</pre></td></tr></table></figure>
+<p>上述代码中并没有包含区域导航和列表项导航的代码，导航的代码将由jQuery生成，因为他们仅在jQuery下有效，没有启用JavaScript的用户依然会看到有效的HTML。（如果上述代码中有不明的地方，那么现在可能是一个很好的时机去重温POSH(Plain-old semantic HTML) 以及 渐进增强）。</p>
+<p>[译注] <a href="http://jsfiddle.net/hNQRS/" target="_blank">JSFiddle完整例子</a></p>
+<h3 id="第二步、搭建对象">第二步、搭建对象</h3><p>创建对象的第一步是在对象中创建「桩」。桩也就是占位符，他们描绘出我们要创建的对象的轮廓。待创建的对象拥有以下方法：</p>
+<ul>
+<li><code>myFeature.int()</code>方法：将会在<code>$(document).ready()</code>的时候运行。此方法是应用的入口。</li>
+<li><code>myFeature.buildSectionNav()</code>方法：将会在<code>MyFeature.init()</code>方法中被调用。这个方法包含一个jQuery对象，这个jQuery对象包含所有区域（Section），并使用这些区域生成一级导航。这个方法中将会在生成的一级导航上注册事件，使得一级导航的项被点击时显示对应的区域。</li>
+<li><code>myFeature.buildItemNav()</code>方法：将会被<code>myFeature.showSection()</code>调用。这个方法包含一个jQuery对象，这个jQuery对象引用区域中列表的所有项，并使用这些项来生成二级导航。这个方法会在二级导航上注册事件，当项被点击时显示对应的内容。</li>
+<li><code>myFeature.showSection()</code>方法：在用户点击一级导航项的时候被调用。这个方法根据被点击的项来显示对应的区域。</li>
+<li><code>myFeature.showContentItem()</code>方法：在用户点击二级导航项的时候被调用。这个方法根据被点击的二级导航项来显示对应的内容。</li>
+</ul>
+<p>同时我们在对象里定义了一个属性：<code>myFeature.config</code>。这个属性用来保存默认的配置。通关过给<code>myFeature.init()</code>方法传<code>config</code>来覆盖默认的配置。</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+</pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myFeature = &#123;</span>
+<span class="line">    <span class="string">'config'</span> : &#123; &#125;,</span>
+<span class="line">    <span class="string">'init'</span> : <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123; &#125;,</span>
+<span class="line">    <span class="string">'buildSectionNav'</span> : <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123; &#125;,</span>
+<span class="line">    <span class="string">'buildItemNav'</span> : <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123; &#125;,</span>
+<span class="line">    <span class="string">'showSection'</span> : <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123; &#125;,</span>
+<span class="line">    <span class="string">'showContentItem'</span> : <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123; &#125;</span>
+<span class="line">&#125;;</span>
+</pre></td></tr></table></figure>
+<p>[译注] <a href="http://jsfiddle.net/hNQRS/" target="_blank">JSFiddle完整例子</a></p>
+<h3 id="第三步、对象的实现">第三步、对象的实现</h3><p>当创建了对象的轮廓之后，就可以开始编码了。首先从建立<code>myFeature.config</code>属性以及<code>myFeature.init()</code>方法入手：</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+<span class="line">11</span>
+<span class="line">12</span>
+<span class="line">13</span>
+<span class="line">14</span>
+<span class="line">15</span>
+<span class="line">16</span>
+<span class="line">17</span>
+<span class="line">18</span>
+<span class="line">19</span>
+<span class="line">20</span>
+<span class="line">21</span>
+<span class="line">22</span>
+<span class="line">23</span>
+<span class="line">24</span>
+<span class="line">25</span>
+<span class="line">26</span>
+<span class="line">27</span>
+<span class="line">28</span>
+<span class="line">29</span>
+<span class="line">30</span>
+<span class="line">31</span>
+<span class="line">32</span>
+<span class="line">33</span>
+<span class="line">34</span>
+<span class="line">35</span>
+<span class="line">36</span>
+<span class="line">37</span>
+<span class="line">38</span>
+<span class="line">39</span>
+<span class="line">40</span>
+</pre></td><td class="code"><pre><span class="line"><span class="string">'config'</span>: &#123;</span>
+<span class="line">    <span class="comment">// 默认的容器是 #myFeature</span></span>
+<span class="line">    <span class="string">'container'</span>: <span class="variable">$(</span><span class="string">'#myFeature'</span>)</span>
+<span class="line">&#125;,</span>
+<span class="line"></span>
+<span class="line"><span class="string">'init'</span>: function (config) &#123;</span>
+<span class="line">    <span class="comment">// 自定义配置可以init的config参数配置</span></span>
+<span class="line">    <span class="keyword">if</span> (config &amp;amp;&amp;amp; typeof (config) == <span class="string">'object'</span>) &#123;</span>
+<span class="line">        <span class="variable">$.</span>extend(myFeature.config, config);</span>
+<span class="line">    &#125;</span>
+<span class="line"></span>
+<span class="line">    <span class="comment">// 创建 或者 缓存dom元素。这些元素在后续代码中使用</span></span>
+<span class="line">    myFeature.<span class="variable">$container</span> = myFeature.config.<span class="keyword">container</span>;</span>
+<span class="line"></span>
+<span class="line">    myFeature.<span class="variable">$sections</span> = myFeature.<span class="variable">$container</span>.</span>
+<span class="line">    <span class="comment">// 仅选择直接子元素</span></span>
+<span class="line">    find(<span class="string">'ul.sections &amp;gt; li'</span>);</span>
+<span class="line"></span>
+<span class="line">    myFeature.<span class="variable">$section_nav</span> = <span class="variable">$(</span><span class="string">'&amp;lt;p/&amp;gt;'</span>)</span>
+<span class="line">        .attr(<span class="string">'id'</span>, <span class="string">'section_nav'</span>)</span>
+<span class="line">        .prependTo(myFeature.<span class="variable">$container</span>);</span>
+<span class="line"></span>
+<span class="line">    myFeature.<span class="variable">$item_nav</span> = <span class="variable">$(</span><span class="string">'&amp;lt;p/&amp;gt;'</span>)</span>
+<span class="line">        .attr(<span class="string">'id'</span>, <span class="string">'item_nav'</span>)</span>
+<span class="line">        .insertAfter(myFeature.<span class="variable">$section_nav</span>);</span>
+<span class="line"></span>
+<span class="line">    myFeature.<span class="variable">$content</span> = <span class="variable">$(</span><span class="string">'&amp;lt;p/&amp;gt;'</span>)</span>
+<span class="line">        .attr(<span class="string">'id'</span>, <span class="string">'content'</span>)</span>
+<span class="line">        .insertAfter(myFeature.<span class="variable">$item_nav</span>);</span>
+<span class="line"></span>
+<span class="line">    <span class="comment">// 构建一级导航，并且触发第一个列表元素的点击事件</span></span>
+<span class="line">    myFeature.buildSectionNav(myFeature.<span class="variable">$sections</span>);</span>
+<span class="line">    myFeature.<span class="variable">$section_nav</span>.find(<span class="string">'li:first'</span>).click();</span>
+<span class="line"></span>
+<span class="line">    <span class="comment">// 隐藏原始的HTML代码</span></span>
+<span class="line">    myFeature.<span class="variable">$container</span>.find(<span class="string">'ul.sections'</span>).<span class="keyword">hide</span>();</span>
+<span class="line"></span>
+<span class="line">    <span class="comment">// 设定属性initialized标识对象已被初始化。本例中没有用到，但这是一个很方便的属性</span></span>
+<span class="line">    myFeature.initialized = true;</span>
+<span class="line">&#125;</span>
+</pre></td></tr></table></figure>
+<p>接着，创建<code>myFeature.buildSetionNav()</code>方法，创建一级导航：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+<span class="line">11</span>
+<span class="line">12</span>
+<span class="line">13</span>
+<span class="line">14</span>
+<span class="line">15</span>
+<span class="line">16</span>
+<span class="line">17</span>
+<span class="line">18</span>
+<span class="line">19</span>
+<span class="line">20</span>
+<span class="line">21</span>
+<span class="line">22</span>
+<span class="line">23</span>
+</pre></td><td class="code"><pre><span class="line"><span class="string">'buildSectionNav'</span>: <span class="function"><span class="keyword">function</span> <span class="params">(<span class="variable">$sections</span>)</span> </span>&#123;</span>
+<span class="line"></span>
+<span class="line">    <span class="comment">// 迭代区域的列表项</span></span>
+<span class="line">    <span class="variable">$sections</span>.each(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span>
+<span class="line"></span>
+<span class="line">        <span class="comment">// 获取当前区域引用</span></span>
+<span class="line">        <span class="keyword">var</span> <span class="variable">$section</span> = $(this);</span>
+<span class="line"></span>
+<span class="line">        <span class="comment">// 创建一级导航列表项</span></span>
+<span class="line">        $(<span class="string">'&amp;lt;li/&amp;gt;'</span>)</span>
+<span class="line">            <span class="comment">// 使用h2的文本作为导航项的标题</span></span>
+<span class="line">            .text(<span class="variable">$section</span>.find(<span class="string">'h2:first'</span>).text())</span>
+<span class="line"></span>
+<span class="line">            <span class="comment">// 将此列表项添加到一级导航元素下</span></span>
+<span class="line">            .appendTo(myFeature.<span class="variable">$section_nav</span>)</span>
+<span class="line"></span>
+<span class="line">            <span class="comment">// 使用data属性在新创建的列表项上存储一个到原始区域的引用</span></span>
+<span class="line">            .data(<span class="string">'section'</span>, <span class="variable">$section</span>)</span>
+<span class="line"></span>
+<span class="line">            <span class="comment">// 为此列表项创建点击回调函数</span></span>
+<span class="line">            .click(myFeature.showSection);</span>
+<span class="line">    &#125;);</span>
+<span class="line">&#125;</span>
+</pre></td></tr></table></figure>
+<p>创建<code>myFeature.buildItemNav()</code>方法，创建二级导航：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+<span class="line">11</span>
+<span class="line">12</span>
+<span class="line">13</span>
+<span class="line">14</span>
+<span class="line">15</span>
+<span class="line">16</span>
+<span class="line">17</span>
+<span class="line">18</span>
+<span class="line">19</span>
+<span class="line">20</span>
+<span class="line">21</span>
+</pre></td><td class="code"><pre><span class="line"><span class="string">'buildItemNav'</span>: <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span>
+<span class="line">    <span class="comment">// 迭代区域内容项</span></span>
+<span class="line">    <span class="variable">$items</span>.each(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span>
+<span class="line">        <span class="comment">// 当前内容项的引用</span></span>
+<span class="line">        <span class="keyword">var</span> <span class="variable">$item</span> = $(this);</span>
+<span class="line"></span>
+<span class="line">        <span class="comment">// 创建一个列表项元素</span></span>
+<span class="line">        $(<span class="string">'&amp;lt;li&amp;gt;'</span>)</span>
+<span class="line">            <span class="comment">// 使用第一个h3元素的文本作为列表项的标题</span></span>
+<span class="line">            .text(<span class="variable">$item</span>.find(<span class="string">'h3:first'</span>).text())</span>
+<span class="line"></span>
+<span class="line">            <span class="comment">// 添加列表想到二级导航上</span></span>
+<span class="line">            .appendTo(myFeature.<span class="variable">$item_nav</span>)</span>
+<span class="line"></span>
+<span class="line">            <span class="comment">// 使用data()方法在列表项上存储一个到原始内容项的引用</span></span>
+<span class="line">            .data(<span class="string">'item'</span>, <span class="variable">$item</span>)</span>
+<span class="line"></span>
+<span class="line">            <span class="comment">// 绑定点击事件</span></span>
+<span class="line">            .click(myFeature.showContentItem);</span>
+<span class="line">    &#125;);</span>
+<span class="line">&#125;</span>
+</pre></td></tr></table></figure>
+<p>最后，实现显示区域和内容的方法，<code>myFeature.showSection()</code>和<code>showContentItem()</code>：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+<span class="line">11</span>
+<span class="line">12</span>
+<span class="line">13</span>
+<span class="line">14</span>
+<span class="line">15</span>
+<span class="line">16</span>
+<span class="line">17</span>
+<span class="line">18</span>
+<span class="line">19</span>
+<span class="line">20</span>
+<span class="line">21</span>
+<span class="line">22</span>
+<span class="line">23</span>
+<span class="line">24</span>
+<span class="line">25</span>
+<span class="line">26</span>
+<span class="line">27</span>
+<span class="line">28</span>
+<span class="line">29</span>
+<span class="line">30</span>
+<span class="line">31</span>
+<span class="line">32</span>
+<span class="line">33</span>
+<span class="line">34</span>
+<span class="line">35</span>
+<span class="line">36</span>
+<span class="line">37</span>
+<span class="line">38</span>
+</pre></td><td class="code"><pre><span class="line"><span class="string">'showSection'</span>: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span>
+<span class="line">    <span class="comment">// 当前被点击的列表项</span></span>
+<span class="line">    <span class="keyword">var</span> <span class="variable">$li</span> = $(this);</span>
+<span class="line"></span>
+<span class="line">    <span class="comment">// 清理导航以及内容区域</span></span>
+<span class="line">    myFeature.<span class="variable">$item_nav</span>.<span class="keyword">empty</span>();</span>
+<span class="line">    myFeature.<span class="variable">$content</span>.<span class="keyword">empty</span>();</span>
+<span class="line"></span>
+<span class="line">    <span class="comment">// 使用data()获取data-section上存储的区域的引用</span></span>
+<span class="line">    <span class="keyword">var</span> <span class="variable">$section</span> = <span class="variable">$li</span>.data(<span class="string">'section'</span>);</span>
+<span class="line"></span>
+<span class="line">    <span class="comment">// 标记列表项为当前项，将列表中标注为当前项的元素移除标记</span></span>
+<span class="line">    <span class="variable">$li</span>.addClass(<span class="string">'current'</span>)</span>
+<span class="line">        .siblings().removeClass(<span class="string">'current'</span>);</span>
+<span class="line"></span>
+<span class="line">    <span class="comment">// 寻找与此区域有关的列表项</span></span>
+<span class="line">    <span class="keyword">var</span> <span class="variable">$items</span> = <span class="variable">$section</span>.find(<span class="string">'ul li'</span>);</span>
+<span class="line"></span>
+<span class="line">    <span class="comment">// 构建此区域的二级导航</span></span>
+<span class="line">    myFeature.buildItemNav(<span class="variable">$items</span>);</span>
+<span class="line"></span>
+<span class="line">    <span class="comment">// 触发第一个元素的'click'事件</span></span>
+<span class="line">    myFeature.<span class="variable">$item_nav</span>.find(<span class="string">'li:first'</span>).click();</span>
+<span class="line">&#125;,</span>
+<span class="line"></span>
+<span class="line"><span class="string">'showContentItem'</span>: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span>
+<span class="line">    <span class="keyword">var</span> <span class="variable">$li</span> = $(this);</span>
+<span class="line"></span>
+<span class="line">    <span class="comment">// 从此列表项的相领元素中移除'current'标记，并给当前元素加上'current'标记</span></span>
+<span class="line">    <span class="variable">$li</span>.addClass(<span class="string">'current'</span>)</span>
+<span class="line">        .siblings().removeClass(<span class="string">'current'</span>);</span>
+<span class="line"></span>
+<span class="line">    <span class="comment">// 使用data()方法获取data-item属性中存储的内容项的引用</span></span>
+<span class="line">    <span class="keyword">var</span> <span class="variable">$item</span> = <span class="variable">$li</span>.data(<span class="string">'item'</span>);</span>
+<span class="line"></span>
+<span class="line">    <span class="comment">// 使用内容项的内容填充内容区域</span></span>
+<span class="line">    myFeature.<span class="variable">$content</span>.html(<span class="variable">$item</span>.html());</span>
+<span class="line">&#125;</span>
+</pre></td></tr></table></figure>
+<p>对象已创建完成，剩下所需要做的就是在document ready的时候调用<code>myFeature.init</code>方法：</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span>
+</pre></td><td class="code"><pre><span class="line">$<span class="comment">(document)</span>.ready<span class="comment">(myFeature.init)</span>;</span>
+</pre></td></tr></table></figure>
+<p>[译注] <a href="http://jsfiddle.net/hNQRS/" target="_blank">JSFiddle完整例子</a></p>
+<h3 id="第四步、应对更改的需求">第四步、应对更改的需求</h3><p>项目总在最后关头做出一些需求上的调整，对吧？这就是对象字面量模式发挥的时候，这个模式可以使你快速不加班地实现更改。在上面的例子中，假若我们要通过AJAX获取数据而非HTML中获取，将会如何？假设后端已经就绪，可以接收前端的请求，代码将调整如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+<span class="line">11</span>
+<span class="line">12</span>
+<span class="line">13</span>
+<span class="line">14</span>
+<span class="line">15</span>
+<span class="line">16</span>
+<span class="line">17</span>
+<span class="line">18</span>
+<span class="line">19</span>
+<span class="line">20</span>
+<span class="line">21</span>
+<span class="line">22</span>
+<span class="line">23</span>
+<span class="line">24</span>
+<span class="line">25</span>
+<span class="line">26</span>
+<span class="line">27</span>
+<span class="line">28</span>
+<span class="line">29</span>
+<span class="line">30</span>
+</pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myFeature = &#123;</span>
+<span class="line">    <span class="string">'config'</span> : &#123;</span>
+<span class="line">        <span class="string">'container'</span> : $(<span class="string">'#myFeature'</span>),</span>
+<span class="line">        <span class="comment">// 指定获取内容的函数</span></span>
+<span class="line">        <span class="string">'getItemURL'</span> : <span class="function"><span class="keyword">function</span><span class="params">(<span class="variable">$item</span>)</span> </span>&#123;</span>
+<span class="line">            <span class="keyword">return</span> <span class="variable">$item</span>.find(<span class="string">'a:first'</span>).attr(<span class="string">'href'</span>);</span>
+<span class="line">        &#125;</span>
+<span class="line">    &#125;,</span>
+<span class="line">    <span class="string">'init'</span> : <span class="function"><span class="keyword">function</span><span class="params">(config)</span> </span>&#123;</span>
+<span class="line">        <span class="comment">// stays the same</span></span>
+<span class="line">    &#125;,</span>
+<span class="line">    <span class="string">'buildSectionNav'</span> : <span class="function"><span class="keyword">function</span><span class="params">(<span class="variable">$sections</span>)</span> </span>&#123;</span>
+<span class="line">        <span class="comment">// stays the same</span></span>
+<span class="line">    &#125;,</span>
+<span class="line">    <span class="string">'buildItemNav'</span> : <span class="function"><span class="keyword">function</span><span class="params">(<span class="variable">$items</span>)</span> </span>&#123;</span>
+<span class="line">        <span class="comment">// stays the same</span></span>
+<span class="line">    &#125;,</span>
+<span class="line">    <span class="string">'showSection'</span> : <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span>
+<span class="line">        <span class="comment">// stays the same</span></span>
+<span class="line">    &#125;,</span>
+<span class="line">    <span class="string">'showContentItem'</span> : <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span>
+<span class="line">        <span class="keyword">var</span> <span class="variable">$li</span> = $(this);</span>
+<span class="line">        <span class="variable">$li</span>.addClass(<span class="string">'current'</span>).</span>
+<span class="line">            siblings().removeClass(<span class="string">'current'</span>);</span>
+<span class="line">        <span class="keyword">var</span> <span class="variable">$item</span> = <span class="variable">$li</span>.data(<span class="string">'item'</span>);</span>
+<span class="line">        <span class="keyword">var</span> url = myFeature.config.getItemURL(<span class="variable">$item</span>);</span>
+<span class="line">        <span class="comment">// 从url中load，而非$item.html()</span></span>
+<span class="line">        myFeature.<span class="variable">$content</span>.load(url);</span>
+<span class="line">    &#125;</span>
+<span class="line">&#125;;</span>
+</pre></td></tr></table></figure>
+<p>需要应用更具灵活性？可以通过配置默认参数的形式来实现。比如，通过<code>myFeature.config</code>配置如何寻找并生成二级导航列表项的标题：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+<span class="line">4</span>
+<span class="line">5</span>
+<span class="line">6</span>
+<span class="line">7</span>
+<span class="line">8</span>
+<span class="line">9</span>
+<span class="line">10</span>
+<span class="line">11</span>
+<span class="line">12</span>
+<span class="line">13</span>
+<span class="line">14</span>
+<span class="line">15</span>
+<span class="line">16</span>
+<span class="line">17</span>
+<span class="line">18</span>
+<span class="line">19</span>
+<span class="line">20</span>
+<span class="line">21</span>
+<span class="line">22</span>
+<span class="line">23</span>
+<span class="line">24</span>
+<span class="line">25</span>
+<span class="line">26</span>
+<span class="line">27</span>
+<span class="line">28</span>
+<span class="line">29</span>
+<span class="line">30</span>
+<span class="line">31</span>
+<span class="line">32</span>
+<span class="line">33</span>
+<span class="line">34</span>
+<span class="line">35</span>
+<span class="line">36</span>
+<span class="line">37</span>
+</pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myFeature = &#123;</span>
+<span class="line">    <span class="string">'config'</span>: &#123;</span>
+<span class="line">        <span class="string">'container'</span>: $(<span class="string">'#myFeature'</span>),</span>
+<span class="line">        <span class="comment">// 指定一级导航项标题的文本出处</span></span>
+<span class="line">        <span class="string">'itemNavSelector'</span>: <span class="string">'h3'</span>,</span>
+<span class="line">        <span class="comment">// 指定处理导航标题的函数</span></span>
+<span class="line">        <span class="string">'itemNavProcessor'</span>: <span class="function"><span class="keyword">function</span> <span class="params">(<span class="variable">$selection</span>)</span> </span>&#123;</span>
+<span class="line">            <span class="keyword">return</span> <span class="string">'Preview of '</span> + <span class="variable">$selection</span>.eq(<span class="number">0</span>).text();</span>
+<span class="line">        &#125;</span>
+<span class="line">    &#125;,</span>
+<span class="line">    <span class="string">'init'</span>: <span class="function"><span class="keyword">function</span> <span class="params">(config)</span> </span>&#123;</span>
+<span class="line">        <span class="comment">// stays the same</span></span>
+<span class="line">    &#125;,</span>
+<span class="line">    <span class="string">'buildSectionNav'</span>: <span class="function"><span class="keyword">function</span> <span class="params">(<span class="variable">$sections</span>)</span> </span>&#123;</span>
+<span class="line">        <span class="comment">// stays the same</span></span>
+<span class="line">    &#125;,</span>
+<span class="line">    <span class="string">'buildItemNav'</span>: <span class="function"><span class="keyword">function</span> <span class="params">(<span class="variable">$items</span>)</span> </span>&#123;</span>
+<span class="line">        <span class="variable">$items</span>.each(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span>
+<span class="line">            <span class="keyword">var</span> <span class="variable">$item</span> = $(this);</span>
+<span class="line">            <span class="comment">// 使用config中指定的属性生成导航标题</span></span>
+<span class="line">            <span class="keyword">var</span> myText = myFeature.config.itemNavProcessor(</span>
+<span class="line">            <span class="variable">$item</span>.find(myFeature.config.itemNavSelector));</span>
+<span class="line">            $(<span class="string">'&amp;lt;li/&amp;gt;'</span>)</span>
+<span class="line">            <span class="comment">// 设置标题</span></span>
+<span class="line">            .text(myText)</span>
+<span class="line">                .appendTo(myFeature.<span class="variable">$item_nav</span>)</span>
+<span class="line">                .data(<span class="string">'item'</span>, <span class="variable">$item</span>)</span>
+<span class="line">                .click(myFeature.showContentItem);</span>
+<span class="line">        &#125;);</span>
+<span class="line">    &#125;,</span>
+<span class="line">    <span class="string">'showSection'</span>: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span>
+<span class="line">        <span class="comment">// stays the same</span></span>
+<span class="line">    &#125;,</span>
+<span class="line">    <span class="string">'showContentItem'</span>: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span>
+<span class="line">        <span class="comment">// stays the same</span></span>
+<span class="line">    &#125;</span>
+<span class="line">&#125;;</span>
+</pre></td></tr></table></figure>
+<p>在<code>myFeature.config</code>中配置的默认参数，都可以在调用<code>myFeature.init()</code>时将其改写：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span>
+<span class="line">2</span>
+<span class="line">3</span>
+</pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span>
+<span class="line">    myFeature.init(&#123; <span class="string">'itemNavSelector'</span> : <span class="string">'h2'</span> &#125;);</span>
+<span class="line">&#125;);</span>
+</pre></td></tr></table></figure>
+<p>在本文所讨论的例子之外，另外一个值得考虑并且可以通过对象字面量模式实现的功能：使用jQuery history 插件实现「返回键」可以返回之前切换过的tab。这个练习留给读者去实现。</p>
+<h2 id="总结">总结</h2><p>如果你一步步跟着例子做下来，那么应该对对象字面量模式有了一个基本的了解，知晓这个模式如何帮助开发更加复杂的应用。例子中的部分代码可以作为复杂应用的基础。</p>
+<p>我鼓励你在下次发现自己写稍微复杂的代码时试试对象字面量模式，她强迫你对组成一个复杂应用的元素和行为进行思考。当你掌握次模式时，她将为你扩展和重用代码提供了坚实的基础。</p>
+<h2 id="更多">更多</h2><ul>
+<li><a href="http://docs.jquery.com/Data" target="_blank" rel="external">More on the jQuery <code>data()</code> method</a></li>
+<li><a href="http://www.wait-till-i.com/2006/02/16/show-love-to-the-object-literal/" target="_blank" rel="external">More praise for the object literal pattern</a></li>
+<li><a href="http://www.mikage.to/jquery/jquery_history.html" target="_blank" rel="external">The jQuery History plugin</a></li>
+<li><a href="http://paulirish.com/2009/markup-based-unobtrusive-comprehensive-dom-ready-execution/" target="_blank" rel="external">An interesting application of the object literal pattern for architecting code for multiple page types</a></li>
+<li><a href="http://www.slideshare.net/rmurphey/using-objects-to-organize-your-jquery-code" target="_blank" rel="external">My presentation at the 2009 jQuery Conference about code organization</a></li>
+</ul>
+
+        
+
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/javascript/">
+                #JavaScript
+              </a>
+            
+              <a href="/tags/翻译/">
+                #翻译
+              </a>
+            
+          </div>
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+
+
+
+  
+
+    
+    
+    
+
+    
+    
+
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              详解JavaScript中的parseInt
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              发表于 2013-08-09
+            
+          </span>
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2013/parseint-function-in-javascript/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2013/parseint-function-in-javascript/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          <p>之前在Stack Overflow看到题目<code>parseInt(1/0, 19)</code>，代码执行的结果是18，令人出乎意料。虽然这个题目是很少见到的情况（0作为被除数、采用19进制），但这个题目是一个很好的了解JavaScript <code>parseInt</code> 函数的机会。</p>
+
+<p>要解答<code>parseInt(1/0, 19)</code>这个题目，要理解两个知识点：</p><br><ol><br>    <li>1/0的值是什么？</li><br>    <li>parseInt函数是怎么样将一个String转化成Int？</li><br></ol><br><br><h3>0作为被除数</h3><br><p>JavaScript里的所有算术运算采用的是<a href="http://en.wikipedia.org/wiki/IEEE_754" target="_blank">IEEE 754 Standard</a>。在IEEE 754 Standard中定义当被除数为0时，结果是（正/负）无穷大，无穷大在JavaScript中使用<code>Infinity</code>代表。所以表达式<code>1/0</code>的结果是正无穷大，即：<code>Infinity</code>。</p>
+
+<p></p><h3>parseInt函数</h3><p></p>
+<p><code>parseInt</code>的定义是：接收一个字符串并返回一个基于指定基数的整型值。语法为：</p><br><pre><code>parseInt(string, radix);</code></pre><p></p><br><p><code>parseInt</code>执行的步骤可以分为四个：</p><br><ul><br>    <li>初步解析 string 参数</li><br>    <li>解析 radix 基数参数</li><br>    <li>根据 radix 再次解析字符串</li><br>    <li>返回结果</li><br></ul><br><br><p>执行步骤说明如下：</p>
+
+<a id="more"></a>
+<p></p><h4>初步解析字符串</h4><p></p>
+<p>函数指定第一个参数是字符串，但存在着传入的参数是非字符串类型的可能性。所以这一步中，首先将 string 参数转换成 字符串类型。接着，剔除掉转换之后的字符串前面的空白符，生成新的字符串string1。若字符串为空，则返回NaN。</p><br><p>例子parseInt(1/0, 19)中，1/0表达式的值为Infinity。Infinity是一个数值，所以，在这一步将被转换成<code>“Infinity”</code></p><br><p>接着，判断string1是否包含+或者-符号，设定sign变量为+/-，并将符号从字符串中剔除，生成字符串string2。</p><br><p>这一步执行完毕之后，获取新的字符串 string2，没有包含空格以及+/-符号。</p>
+
+<p></p><h4>解析基数参数</h4><p></p>
+<p>与string参数相同，radix可能非数值，所以首先将radix转换成整型radix1。</p><br><p>在JavaScript中，radix的取值可能有两种：等价于0的值（比如undefined、null、false、””以及0本身），[2-36]。若radix1的取值不在这两者之中，返回NaN。</p><br><p>这一步执行完毕，获取新的基数值 radix1。</p>
+
+<p></p><h4>再次解析字符串</h4><p></p>
+<p>基数的范围设定在[2-36]，其中前十位使用[0-9]表示，[10-35]位使用英语字母表示，即[a-z]或者[A-Z]。从这里可以看出基数的大小决定着字符串的取值有效范围[0-9a-ZA-Z]。例如：</p><br><pre><code>parseInt(“a”, 10);<br>// 在基数为10的情况下，”i”不能被转换成有效的数值，所以返回的是NaN<br><br>parse(“a”, 11”);<br>// 基数更改为11，”a”可以被转换成10</code></pre><br><p>由于基数会影响解析的行为，所以这里需要再次解析字符串。此时将逐个检查字符串中的字符，当遇到字符在基数指定的有效范围之外，解析停止，字符串中后续的字符将被丢弃，生成新的字符串string3。若string3为空，返回NaN。</p><br><p>需要注意的是这一步中，基数有一个特殊的取值情况是：</p><br><ul><br>    <li>当基数为16时，字符串中若开头为”0x”/“0X”，这两个字符将被过滤掉。因为16进制的表示法为“oxNN”。</li><br></ul><br><p>这一步执行完毕之后，获取新的字符串 string3。</p>
+
+<p></p><h4>返回结果</h4><p></p>
+<p>最后一步，将上一步中获取的string3转换成数值表示，如”a”在11进制中将被转换成10；然后将符号sign添加到数值上，并返回结果</p>
+
+<p></p><h3>再看parseInt(1/0,19)</h3><p></p>
+<p>从上面的执行步骤来看，parseInt(1/0, 19)即是parseInt(“Infinity”, 19)；在基数为19的情况下，字符串中第一个字符”I”是有效的数值，但第二个字符”n”无效，所以又变成了parseInt(“I”, 19)。”i”所对应的数值如下所示：</p><br><pre><code>0 1 2 3 4 5 6 7 8 9 a  b  c  d  e  f  g  h  i<br>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18</code></pre><br><p>所以结果是：18</p>
+
+<p></p><h3>马上试试看</h3><p></p>
+<p>另外有一个道题目，将数组所有元素的字符串转换成整型值：</p><br><pre><code>[“10”, “10”, “10”, “10”, “10”].map(parseInt)</code></pre><br><p><code>map</code>函数的语法为：</p><br><pre><code>[].map(fn)</code></pre><br><p><code>map</code>函数在数组的每个元素上执行fn，返回在每个元素上执行fn结果组成的数组。fn函数接收三个参数：元素值、元素索引值、数组本身。所以上面的调用执行的是：</p><br><pre><code>[<br>    parseInt(“10”, 0); // 基数0, 即默认10进制<br>    parseInt(“10”, 1); // 基数1无效，返回NaN<br>    parseInt(“10”, 2); // 基数2， 10表示2<br>    parseInt(“10”, 3); // 基数3， 10表3<br>    parseInt(“10”, 4); // 基数4， 10表示4<br>]</code></pre><br><p>所以，结果是：[10, NaN, 2, 3, 4]。</p>
+
+<p></p><h3>潜在的Bug</h3><p></p>
+<p>如果使用JSHint校验parseInt(1/0)的时候会提示：</p><br><pre><code>Line 2: parseInt(1/0);<br>Missing radix parameter.</code></pre><br><p>明确提示需要指定 radix（第二个参数）。举个例子：</p><br><pre><code>parseInt(“08”);</code></pre><br><p>8进制和16进制的数字以”0”开头（16进制是”0X”)，所以在有些脚本解释器中（IE8浏览器）可能误以8进制来解析”08”这个字符串。在8进制中，”08”是个无效的值，所以无法得到预期值。为了保证结果的准确性，建议在使用parseInt的时候，指明基数。</p>
+
+<p></p><p>参考：</p><p></p>
+<ul><br>    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt" target="_blank">ParseInt - MDN</a></li><br>    <li><a href="http://es5.github.io/#x15.1.2.2" target="_blank">Annotated ECMAScript 5.1 # parseInt</a></li><br>    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank">map - MDN</a></li><br>    <li><a href="http://en.wikipedia.org/wiki/IEEE_754" target="_blank">IEEE 754 Standard</a></li><br></ul>
+        
+
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/javascript/">
+                #JavaScript
+              </a>
+            
+              <a href="/tags/javascript-foundation/">
+                #JavaScript Foundation
+              </a>
+            
+          </div>
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+
+
+
+  
+
+    
+    
+    
+
+    
+    
+
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              QUnit快速上手
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              发表于 2013-08-07
+            
+          </span>
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2013/getting-started-qunit/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2013/getting-started-qunit/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          <h3>准备测试环境</h3><br><ol><br>  <li>在<a href="http://qunitjs.com/" target="_blank">Qunit官网</a>下载<code>qunit.js</code>和<code>qunit.css</code>两个文件，然后放进<code>qunit</code>文件夹；</li><br><br>  <li>创建<code>test.html</code>，内容为：<br><pre><code class="html">&lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>    &lt;meta charset=”utf-8”&gt;<br>    &lt;title&gt;QUnit Example&lt;/title&gt;<br>    &lt;link rel=”stylesheet” href=”qunit/qunit.css”&gt;<br>&lt;/head&gt;<br><br>&lt;body&gt;<br>    &lt;div id=”qunit”&gt;&lt;/div&gt;<br>    &lt;div id=”qunit-fixture”&gt;&lt;/div&gt;<br>    &lt;script src=”qunit/qunit.js”&gt;&lt;/script&gt;<br>    &lt;!— 源文件 —&gt;<br><br>    &lt;!— 测试脚本 —&gt;<br><br>&lt;/body&gt;<br>&lt;/html&gt;</code></pre></li><br></ol><br><br><p>QUnit对源文件和测试脚本的存放目录结构没有任何要求，可以自由配置，只要在tests.html（此文件名亦可自定义）正确引用<code>qunit.js</code>、<code>qunit.css</code>、源文件和测试脚本文件即可。这里我采用如下的目录结构：</p><br><br><a id="more"></a><br><br><pre><code>.<br>├── qunit<br>│   ├── qunit-1.12.0.css<br>│   └── qunit-1.12.0.js<br>├── src<br>│   ├── array.js<br>│   └── core.js<br>├── test<br>│   ├── array-test.js<br>│   └── core-test.js<br>└── tests.html</code></pre><br><br><p>我将源代码放置在<code>src</code>目录下（其中有两个文件：<code>array.js</code>和<code>core.js</code>），测试脚本放置在<code>test</code>目录中（与源码文件对应：<code>array-test.js</code>和<code>core-test.js</code>）。每一份源代码文件对应着一个测试脚本文件，在名称上，测试脚本文件文件名 = 源代码文件名 + “-test”。测试执行文件为：<code>tests.html</code>，<code>qunit</code>库的文件放置在qunit目录下。</p><br><br><h3>编写源文件以及测试脚本</h3>
+
+<p>src/core.js，在core.js文件在定义了一个判断是否object是数组的方法：isArray()。</p><br><pre><code class="javascript">function isArray(object) {<br>    return Object.prototype.toString.call(object) === “[object Array]”;<br>}</code></pre><br><br><p>test/core-test.js，src/core.js对应的测试脚本：</p><br><pre><code class="javascript">test(“Function: isArray”, function() {<br>    // 断言方法ok()，接收两个参数。<br>    // 第一个参数是true即通过测试，第二参数为断言提示信息<br>    ok(isArray([1, 2]), “[1, 2] is an array”);<br>    ok(!isArray({}),”{} is NOT an array”);<br>});</code></pre><br><br><p>src/array.js，定义了filter函数。filter函数遍历数组array中的元素，在各个元素上调用fn，fn执行返回true则将元素保存进新的数组，最后返回新的数组。</p><br><pre><code class="javascript">function filter(array, fn) {<br>    var result = [];<br>    for (var i = 0; i &lt; array.length; i++) {<br>        if (fn.call(null, array[i])) {<br>            result.push(array[i]);<br>        }<br>    }<br>    return result;<br>}</code></pre><br><br><p>test/array-test.js，src/array.js对应的测试脚本<br><pre><code class="javascript">test(“Function: filter”, function() {<br>    function greaterThan(value) {<br>        return value &gt; 10;<br>    }<br><br>    // 断言方法equal()，接收三个参数。<br>    // 第一个参数为 运行结果，第二个参数为 期望值，第三个参数为断言提示信息。<br>    equal(filter([9, 10, 11], greaterThan), [11], “11 is greater then 10”);<br>});</code></pre><br></p><h3>引用文件并执行测试</h3><br><p>修改tests.html，引用需要测试的源文件以及对应的测试脚本文件：</p><br><pre><code class="html">&lt;!— 源文件 —&gt;<br>&lt;script src=”src/core.js”&gt;&lt;/script&gt;<br>&lt;script src=”src/array.js”&gt;&lt;/script&gt;<br><br>&lt;!— 测试脚本 —&gt;<br>&lt;script src=”test/core-test.js”&gt;&lt;/script&gt;<br>&lt;script src=”test/array-test.js”&gt;&lt;/script&gt;</code></pre><br><br><p>在浏览器中打开<code>tests.html</code>，即可执行测试。</p>
+        
+
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/javascript/">
+                #JavaScript
+              </a>
+            
+              <a href="/tags/qunit/">
+                #QUnit
+              </a>
+            
+              <a href="/tags/unit-test/">
+                #Unit test
+              </a>
+            
+          </div>
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+
+
+
+  
+
+    
+    
+    
+
+    
+    
+
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              SimpleDateFormat 一小时之谜
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              发表于 2013-08-07
+            
+          </span>
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2013/simpledataformat/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2013/simpledataformat/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          <h3>背景介绍</h3><br><p>近期，编写了一个针对JavaScript日期格式化类的测试。这个JavaScript日期格式化类模仿Java中的<a href="http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html" target="_blank">SimpleDateFormat</a>类（java.text.SimpleDateFormat）的格式。</p><br><p>测试采用<a href="http://qunitjs.com/" target="_blank">QUnit</a>作为JavaScript单元测试工具。结合QUnit，同时需要SimpleDateFormat类的格式输出结果做比对，那么最为简便的测试环境是使用JSP（容器/服务器可选择Tomcat），测试的步骤如下：</p><br><ol><br>    <li>定义格式化模式（Pattern），这个模式同时需要在 JSP页面 和 测试脚本中定义。比如：”HH:mm:ss”；</li><br>    <li>在JSP页面中，使用SimpleDateFormat类格式化日期，并将日期原始数据和格式化结果写在页面上。例如：<pre><code>&lt;div class=”date”&gt;&lt;%= date.getTime()%&gt;&lt;/div&gt;<br>&lt;div class=”result”&gt;&lt;%= formatter.format(date)%&gt;&lt;/div&gt;</code></pre></li><br>    <li>在测试脚本中，获取页面上的日期原始数据并进行格式化；将结果与(2)中输出的结果进行比对。</li><br></ol><br><p>测试分为“模式（Pattern）”测试，“本地化（Locale）”测试，“边界值（Boundary）”测试以及“随机（Random）”测试。其中：</p><br><br><a id="more"></a><br><br><ul><br>    <li>模式测试，是指针对单个模式（如”y”, “yy”, “yyyy”）进行测试。模式字母个数的不同，输出的结果也不同，如假定年份是2013，那么模式”y”和”yy”输出是13，而”yyyy”输出则是2013。</li><br>    <li>本地化测试，是指针对时区进行测试，在国际化的场景中比较实用。比如测试（GMT 0）以及本地时区（GMT +8）的数据相差值是否正确。</li><br>    <li>边界值测试，是指针对边界情况进行测试。比如，当选择2月份，并错误的将天数设定为30天，此时应该可以向前推算，变成3月1号/3月2号。</li><br>    <li>随机测试，是指随机生成样例进行大范围的测试。</li><br></ul><br><br><h3>“一小时”之谜</h3><br><p>假定 JavaScript 日期格式化类定义在<code>Example.Date</code>，格式方法为<code>format</code>。</p><br><p>在进行随机测试的过程（随机生成100样例）中，发现会有一定的个数出现失败。</p><br><br><pre><code class="java">// 随机测试的JSP代码<br>SimpleDateFormat sdfRandom = new SimpleDateFormat(“yyyy-MM-dd HH:mm E a h”);<br>Random rand = new Random();<br>for (int i = 0; i &lt; 100; i++) {<br>    int year = 1970 + rand.nextInt(2014 - 1970);<br>    int month = rand.nextInt(12);<br>    int day = rand.nextInt(32);<br>    int hour = rand.nextInt(24);<br>    int minute = rand.nextInt(60);<br>    int second = rand.nextInt(60);<br>    cal.set(year, month, day, hour,minute, second);<br>    date = cal.getTime();<br>    // 输出结果到页面<br>}</code></pre><br><pre><code class="javascript"> // 测试脚本代码<br>test(“random”, function() {<br>    var date = null;<br>    var result = null;<br>    var jsFormatter = Example.Date.format;<br>    var jsResult = null;<br>    var lengthOfTestcase = document.querySelectorAll(“.random-test-case”).length;<br>    for (var i = 0; i &lt; lengthOfTestcase; i++) {<br>        date = document.getElementById(“random-“ + i + “-date”).innerHTML;<br>        result = document.getElementById(“random-“ + i + “-result”).innerHTML;<br>        jsResult = jsFormatter(“yyyy-MM-dd HH:mm E a h”, date);<br>        equal(jsResult, result, “The format should be:” + result);<br>    }<br>});</code></pre><br><p>所有失败样例的特点都一致，即SimpleDateFormat输出的结果比Example.Date.format输出的结果在“小时”上刚刚好多一个小时：</p><br><pre><code class="diff">Expected: “1986-09-03 06:06 Wed AM 6”<br>Result:   “1986-09-03 05:06 Wed AM 5”<br>Diff:        “1986-09-03 06:06 05:06  Wed  AM 6” 5”</code></pre><br><br><h3>定位问题</h3>
+
+<p>经过一番排查之后，最终发现最大的可疑点。例如：Unix时间戳<code>526079183</code>在SimpleDateFormat输出与在JavaScript中输出结果不一致：</p><br><pre><code class="javascript">// JavaScript<br>console.log(new Date(526079183*1000));<br>// Wed Sep 03 1986 05:06:23 GMT+0800 (China Standard Time)</code></pre><br><br><pre><code class="java">// Java SimpleDateFormat<br>formatter.format(526079183000L);<br>// 1986-09-03 06:06:23</code></pre><br><p>用其他语言进行佐证，比如采用Ruby：</p><br><pre><code class="ruby"># Ruby irb<br>Time.at(526079183)<br># =&gt; 1986-09-03 05:06:23 +0800</code></pre><br><p>可以看到JavaScript的输出与Ruby的输出一致，那么原因在于SimpleDateFormat上。</p><br><p>问题的可能原因在于SimpleDateFormat中会涉及到<a href="http://zh.wikipedia.org/wiki/%E5%A4%8F%E6%97%B6%E5%88%B6" target="_blank">夏令时（Daylight saving time）</a>。Wikipedia上关于夏令时的定义：</p><br><blockquote>夏时制，又称日光节约时制、日光節約時間（英语：Daylight saving time）或夏令时间（英语：Summer time），是一种为节约能源而人为规定地方时间的制度，在这一制度实行期间所采用的统一时间称为“夏令时间”。一般在天亮早的夏季人为将时间提前一小时，可以使人早起早睡，减少照明量，以充分利用光照资源，从而节约照明用电。各个采纳夏时制的國家具体规定不同。目前全世界有近110个国家每年要实行夏令时。</blockquote><br><p>其中，中国在1986年至1991年之间实行过夏令时。</p>
+
+<p></p><h3>验证猜想</h3><p></p>
+<p>可以从两点上进行判断是否是由于夏令时导致：</p><br><ol><br>    <li>设置SimpleDateFormat的时区为GMT 0以避免夏令时。<pre><code class="java">SimpleDateFormat sdfRandom = new SimpleDateFormat(“yyyy-MM-dd HH:mm E a h”);<br>sdfRandom.setTimeZone(TimeZone.getTimeZone(“UTC”));<br>Random rand = new Random();<br>…</code></pre></li><br>    <li>将随机的样例数据范围设定在实行夏令时的时间段内，那么失败样例的比例应该会大幅提高。<pre><code class="java">…<br>int year = 1986 + rand.nextInt(1991 - 1986);<br>…</code></pre></li><br></ol><br><br><p>结果数据上验证了猜想。在采用夏令时的时间上，SimpleDateFormate输出的结果将多出一个小时，即提前了一个小时。</p>
+
+        
+
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/qunit/">
+                #QUnit
+              </a>
+            
+              <a href="/tags/simpledataformat/">
+                #simpleDataFormat
+              </a>
+            
+          </div>
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+
+
+
+  
+
+    
+    
+    
+
+    
+    
+
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              DOM基础之Node Objects
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              发表于 2013-08-04
+            
+          </span>
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2013/dom-foundation-node-objects/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2013/dom-foundation-node-objects/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          <p></p><h3>文档对象模型（DOM）</h3><p></p>
+<p></p><p>DOM全称Document Object Model，由浏览器实现的一套编程接口，以便动态更改文档（通过JavaScript）。DOM是一棵树，在浏览器解析HTML页面的时候生成，这棵树由JavaScript节点对象（Node Objects）组成。</p><p></p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;&lt;title&gt;DOM Tree&lt;/title&gt;&lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;DOM Demo&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>上面的代码将生成如下的DOM：</p>
+<pre><code>                        ■ DOCTYPE(9)
+                        ↓
+                        ■ HTML(1)
+          ↙        ↙              ↘             ↘
+   ■ #text(3)  ■ HEAD(1)          ■ BODY(1)       ■ #text(3)
+                  ↓               ↙   ↓  ↘
+               ■ TITLE(1)  ■ 回车换行(3)  ■ P(1)   ■ 回车换行(3)
+                  ↓                       ↓
+               ■ #text(3)                #text(3)
+
+括号中的数字代表节点类别：1代表元素节点、3代表文本节点、10代表文档类型节点</code></pre>
+<h3>节点对象（Node Objects）</h3>
+<p>DOM树由节点对象组成，节点对象根据类型的不同又分为许多类别，但都派生于<code>Node</code>。<code>Node</code>类是一个JavaScript构造函数，继承<code>Object</code>，拥有节点的通用属性和方法。节点对象的继承关系例子：</p>
+<pre><code>元素节点对象A
+HTMLAnchorElement &lt; HTML *Element &lt; HTML Element &lt; Element &lt; Node &lt; Object
+
+文本节点
+Text &lt; CharacterData &lt; Node &lt; Object
+
+文档节点
+HTMLDocument &lt; Document &lt; Node &lt; Object
+
+文档片段节点
+DocumentFragment &lt; Node &lt; Object</code></pre>
+
+<p>根据节点的不同，节点对象分为许多类别，这些类别都有自己的构造函数。常见的节点类别有：</p>
+<a id="more"></a>
+<pre><code class="javascript">ELEMENT_NODE 元素节点，比如DIV
+TEXT_NODE 文本节点，比如普通文字也包括回车换行符、空白符
+DOCUMENT_NODE 文档节点，比如window.document
+DOCUMENT_TYPE_NODE 文档类型节点，比如<!DOCTYPE html>
+DOCUMENT_FRAGMENT_NODE 文档片段节点，比如通过document.createDocumentFragment()创建的节点</code></pre>
+<p>节点对象的类别信息以键值对形式作为静态属性存储于Node构造函数中。可以通过以下的代码查看所有的节点类别信息：</p>
+<pre><code class="javascript">for (var p in Node) {
+    console.log(p, " = " + Node[p]);
+}</code></pre>
+<p>输出的结果片段：</p>
+<pre><code class="javascript">
+ELEMENT_NODE = 1
+ATTRIBUTE_NODE = 2
+TEXT_NODE = 3
+...</code></pre>
+<p>从输出的结果中可以看出每种类别对应一个数字的值，在判断节点类别的时候，通常使用这个数字值进行判断，例如：</p>
+<pre><code class="javascript">var ul = document.getElementById("ul");
+console.log(ul.nodeType === Node.ELEMENT_NODE); // true
+console.log(ul.nodeType === 1); // true</code></pre>
+
+<p></p><h3>节点对象的属性与方法</h3><p></p>
+<p></p><p><code>Node</code>构造函数定义了节点通用的属性和方法。</p><p></p>
+<p></p><p>Node实例属性列表：</p><p></p>
+<ul><br>    <li>childNodes</li><br>    <li>firstChild</li><br>    <li>lastChild</li><br>    <li>previousSibling</li><br>    <li>nextSibling</li><br>    <li>parentNode</li><br>    <li>nodeName</li><br>    <li>nodeType</li><br>    <li>nodeValue</li><br></ul><br><p>常用的Node实例方法：</p><br><ul><br>    <li>appendChild()</li><br>    <li>insertBefone()</li><br>    <li>cloneNode()</li><br>    <li>removeChild()</li><br>    <li>replaceChild()</li><br></ul>
+
+<p></p><p>特定的节点类别继承了<code>Node</code>的属性和方法，同时还有拥有特定的方法：</p><p></p>
+<p></p><p>例如，DOCUMENT_NODE拥有方法<code>document.createElement()</code>和<code>document.createTextNode()</code>方法。</p><p></p>
+<p></p><p>HTML *ELMENT节点拥有以下常见的属性：</p><p></p>
+<ul><br>    <li>innerHTML</li><br>    <li>outerHTML</li><br>    <li>innerText</li><br>    <li>outText</li><br>    <li>children</li><br></ul>
+        
+
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/dom/">
+                #DOM
+              </a>
+            
+              <a href="/tags/foudation/">
+                #Foudation
+              </a>
+            
+              <a href="/tags/阅读笔记/">
+                #阅读笔记
+              </a>
+            
+          </div>
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+
+
+
+  
+
+    
+    
+    
+
+    
+    
+
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Expose shuffle function of underscore.js
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              发表于 2013-08-02
+            
+          </span>
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2013/Expose-shuffle-function-of-underscore/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2013/Expose-shuffle-function-of-underscore/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          <p>Underscore.js 里有一个数组重新随机排序的函数，<em>.shuffle：</em></p><br><pre><code class="javascript">// Shuffle an array.
+.shuffle = function (obj) {<br>    var rand;<br>    var index = 0;<br>    var shuffled = [];<br>    each(obj, function (value) {<br>        // <em>.random函数返回[0, index]之间的随机数<br>        rand = </em>.random(index++);<br>        shuffled[index - 1] = shuffled[rand];<br>        shuffled[rand] = value;<br>    });<br>    return shuffled;<br>};</code></pre><br><h3>函数的算法</h3><br><ol><br>    <li>创建 数组shuffled = []，用于保存随机排序后的数组。</li><br>    <li>迭代 待排序数组，设定当前迭代索引index = 0；</li><br>    <li>生成 随机索引rand。rand的值介于[0, index]；</li><br>    <li>添加 元素到shuffled数组，值为shuffled[rand]；</li><br>    <li>赋予 shuffle[rand] 当前迭代元素的值 。</li><br></ol><br><br><h3>运行过程</h3><br><p>假定现有待随机排序数组array = [1, 2, 3, 4, 5]。</p><br><p>那么第一次迭代的时候情形如下：</p>
+
+<a id="more"></a>
+<p><pre><code>array[index]: 1, index: 0, rand: 0, shuffled: []</code></pre></p>
+<pre><code><span class="keyword">rand</span>
+↓
+■     □     □     □     □
+↑
+<span class="keyword">index</span>
+</code></pre><p>shuffled = [1];</p>
+<p>此时，rand的值只能与index的值相等，所以shuffled第一个元素取值为待排序数组的第一个元素。</p><br><p>第二次迭代时，假定rand随机值为0（rand的值只能在[0, index]之间）：</p><br><pre><code>array[index]: 2, index: 1, rand: 0, shuffled: [1]<br><br>    rand(assume)<br>    ↓<br>    ■     ■     □     □     □<br>          ↑<br>          index<br><br>shuffled = [2, 1];</code></pre><br><p>shuffle[1]被赋值为shuffle[0]，shuffle[0]被赋值为array[1]。</p>
+
+<p>最后一次迭代假设此时rand = 1，shuffled = [2, 4, 1, 5]：</p><br><pre><code>array[index]: 3, index: 4, rand: 1, shuffled: [2, 4, 1, 5]<br><br>          rand(assume)<br>          ↓<br>    ■     ■     ■     ■     ■<br>                            ↑<br>                            index<br>shuffle = [2, 3, 1, 5, 4]</code></pre><br><p>shuffled[4]将会被赋值为shuffled[1]，shuffled[1]被赋值为3。所以shuffled最后为[2, 3, 1, 5, 4]。</p>
+
+<p></p><h3>另一种方法</h3><p></p>
+<p>思路为：</p><br><ol><br>    <li>迭代 待排序数组；</li><br>    <li>生成 随机索引rand，索引的范围为[0 ~ 待排序数组 - 1]；</li><br>    <li>抽取 待排序数组中索引为rand的元素，抽取行为改变了待排序数组；</li><br>    <li>追加 抽取的元素到结果数组的末尾。</li><br></ol><br><pre><code class="javascript">function shuffle(array) {<br>    var rand;<br>    var shuffled = [];<br>    for (var i = 0, l = array.length; i &lt; l; i++) {<br>        // 获取随机索引值。<br>        // 随机索引值的范围为[0 ~ 原始数组的长度 - 1]<br>        rand = random(array.length - 1);<br><br>        // 使用splice方法抽取数组元素<br>        shuffled[i] = array.splice(rand, 1)[0];<br>    }<br>    return shuffled;<br>}<br><br>function random(min, max) {<br>    (Object.prototype.toString.call(max) !== “[object Number]”) &amp;&amp; (max = min);<br>    return min + Math.floor(Math.random() * (max - min + 1));<br>}</code></pre><br><p>相对于<em>.shuffle，这个方法每个元素在每次迭代过程中就确定下来了，而</em>.shuffle结果数组中每个元素在最后一步完成前都可能改变。</p>
+        
+
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/javascript/">
+                #JavaScript
+              </a>
+            
+          </div>
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+
+
+
+  
+
+    
+    
+    
+
+    
+    
+
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              JavaScript中的单例模式（Singleton Pattern ）
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+          <span class="post-time">
+            
+              发表于 2013-08-01
+            
+          </span>
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2013/singleton-pattern-in-javascript/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2013/singleton-pattern-in-javascript/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          <p></p><h3>单例（Singleton）的定义:</h3><p></p>
+<blockquote>The idea of the singleton pattern is to have only one instance of a specific class. This means that the second time you use the same class to create a new object, you should get the same object that was create the first time.<br><br>单例模式是指在程序中一种特殊的类（class），他们仅有一个实例。这意味着当这个类在被第一次实例化后，之后的实例化操作都将获得到第一次实例化时产生的实例。</blockquote>
+
+<p></p><h3>对象字面量与单例</h3><p></p>
+<p>以对象字面量(Object Literal)定义的对象本身即为单例：</p><br><pre><code class="javascript">var o1 = {<br>    name: “SP1 Object Literal”,<br>    getName: function() {<br>        return this.name;<br>    }<br>};<br><br>var o2 = {<br>    name: “SP1 Object Literal”,<br>    getName: function() {<br>        return this.name;<br>    }<br>};<br><br>// o2的键值与o1完全相同，但他们是不同的对象。<br>console.log(o1 === o2); // false</code></pre><br><br><p>对象字面量实现单例模式的另外一种形式：</p>
+
+<a id="more"></a>
+<pre><code class="javascript">var o = (function(){
+    var name = "SP2 IIFE Method";
+    var getName = function() {
+        return this.name;
+    };
+    return {
+        name: name,
+        getName: getName
+    };
+}());</code></pre>
+
+<p></p><h3>构造函数与单例</h3><p></p>
+<p></p><p>通过new操作符调用构造函数创建对象的方式中，实现单例模式的关键点在于：</p><p></p>
+<ol><br>    <li>第一次调用构造函数时，存储创建的实例</li><br>    <li>后续的调用，直接返回实例</li><br></ol>
+
+<p></p><p>依据这个思路，有三种实现方式。</p><p></p>
+<p></p><p>第一种最为简单，但也是最不可靠的方式：将实例存储在全局变量中。</p><p></p>
+<pre><code class="javascript">// 存储实例的全局变量。因为这个全局变量可能被改写，所以此方法不可靠。
+var o = null;
+function SingletonPattern3() {
+    if (o) {
+        return o;
+    }
+    this.name = "SP3";
+    o = this;
+}
+
+var s1 = new SingletonPattern3();
+var s2 = new SingletonPattern3();
+console.log(s1 === s2); // true</code></pre>
+
+<p></p><p>第二种方法，将实例存储在构造函数的静态属性中。相对第一种方式，此方式显然会比较安全一些，但此构造函数的静态属性仍然存在被修改的可能性。</p><p></p>
+<pre><code class="javascript">function SingletonPattern4() {
+    // 保存构造函数的引用
+    var constructor = arguments.callee;
+    if (constructor.instance) { 
+        return constructor.instance;
+    }
+    this.name = "SP4";
+
+    // 将实例存储于构造函数的静态属性instance中
+    constructor.instance = this;
+}
+SingletonPattern4.prototype.getName = function() {
+    return this.name;
+};
+
+var s1 = new SingletonPattern4();
+var s2 = new SingletonPattern4();
+console.log(s1 === s2); // true</code></pre>
+
+<p></p><p>第三种方式，采用闭包。第一次调用之后，存储实例，并改写构造函数自身。</p><p></p>
+<pre><code class="javascript">function SingletonPattern5() {
+    var sp = this;
+    this.name = "SP5";
+
+    // 改写构造函数
+    SingletonPattern5 = function() {
+        return sp;
+    };
+}
+
+SingletonPattern5.prototype.getName = function() {
+    return this.name;
+};
+
+var s1 = new SingletonPattern5();
+var s2 = new SingletonPattern5();
+console.log(s1 === s2); // true</code></pre>
+        
+
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/javascript/">
+                #JavaScript
+              </a>
+            
+              <a href="/tags/设计模式/">
+                #设计模式
+              </a>
+            
+          </div>
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+
+
+
+  
+
+          </div>
+
+          
+        </div>
+
+        
+<div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+
+<div id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+    
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview" data-target="site-overview">
+          站点概览
+        </li>
+      </ul>
+    
+
+    <div class="site-overview">
+      <div class="site-author motion-element">
+        <img class="site-author-image" src="/images/default_avatar.jpg" alt="iissnan" />
+        <p class="site-author-name">iissnan</p>
+      </div>
+      <p class="site-description motion-element">胡编一通，乱写一气</p>
+      <div class="site-state motion-element">
+        <div class="site-state-item site-state-posts">
+          <span class="site-state-item-count">172</span>
+          <span class="site-state-item-name">日志</span>
+        </div>
+        <div class="site-state-item site-state-tags">
+            <span class="site-state-item-count">105</span>
+            <span class="site-state-item-name">标签</span>
+        </div>
+        <div class="site-state-item site-state-pages">
+            <span class="site-state-item-count">1</span>
+            <span class="site-state-item-name">页面</span>
+        </div>
+      </div>
+
+      
+        <div class="feed-link motion-element">
+          <a href="/atom.xml">
+            <i class="menu-item-icon icon-feed"></i>
+            RSS
+          </a>
+        </div>
+      
+
+      <div class="social-info motion-element">
+        
+          
+            <span class="soclial-item">
+              <a href="https://github.com/iissnan">GITHUB</a>
+            </span>
+          
+            <span class="soclial-item">
+              <a href="https://twitter.com/iissnan">TWITTER</a>
+            </span>
+          
+            <span class="soclial-item">
+              <a href="http://weibo.com/iissnan">WEIBO</a>
+            </span>
+          
+            <span class="soclial-item">
+              <a href="http://douban.com/people/iissnan">DOUBAN</a>
+            </span>
+          
+            <span class="soclial-item">
+              <a href="http://www.zhihu.com/people/iissnan">ZHIHU</a>
+            </span>
+          
+        
+      </div>
+
+    </div>
+
+    
+      <div class="post-toc sidebar-panel-active">
+        
+      </div>
+    
+  </div>
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp;  2011 - 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">iissnan</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 - <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT</a>
+</div>
+
+
+
+  <div class="cc-license">
+    <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+      <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+    </a>
+  </div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".fancybox").fancybox();
+    });
+  </script>
+
+  <script type="text/javascript">
+  function isDesktop () {
+    return screen.width > 991;
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767;
+  }
+
+  function isMobile () {
+    return screen.width < 767;
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.show', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.hide', function () {
+
+      });
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, SIDEBAR_DISPLAY_DURATION);
+      sidebar.trigger('sidebar.show');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.trigger('sidebar.hide');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      $('.post').velocity('transition.slideDownIn', {stagger: 300, drag: true});
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+    <script type="text/javascript" id="motion.page.archive">
+      $('.archive-year').velocity('transition.slideLeftIn');
+    </script>
+  
+
+
+  
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"notes-iissnan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+  
+</body>
+</html>
