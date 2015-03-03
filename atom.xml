@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-03-02T18:57:23.701Z</updated>
+  <updated>2015-03-03T16:49:40.087Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,27 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[SBX]]></title>
+    <link href="http://yoursite.com/2015/03/04/SBX-logo-20150304/"/>
+    <id>http://yoursite.com/2015/03/04/SBX-logo-20150304/</id>
+    <published>2015-03-03T16:45:45.000Z</published>
+    <updated>2015-03-03T16:48:05.000Z</updated>
+    <content type="html"><![CDATA[<p><img src="http://img.ui.cn/data/file/6/9/3/193396.png" alt="SBX"></p>
+<p>友情提示，只看紫色部分</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><img src="http://img.ui.cn/data/file/6/9/3/193396.png" alt="SBX"></p>
+<p>友情提示，只看紫色部分</p>
+]]>
+    </summary>
+    
+      <category term="logo" scheme="http://yoursite.com/tags/logo/"/>
+    
+      <category term="logo" scheme="http://yoursite.com/categories/logo/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[组诗二零一五三月]]></title>
